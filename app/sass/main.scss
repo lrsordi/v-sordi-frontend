@@ -1,0 +1,111 @@
+@import "base/normalize.scss";
+@import "base/fonts.scss";
+
+
+html,body {
+  position : relative;
+  display : block;
+  float : left;
+  width : 100%;
+  height : 100%;
+  background: #ffffff;
+  overflow-x : hidden;
+  overflow-y : scroll;
+}
+
+// #app {
+//   display : block;
+//   float : left;
+//   position : relative;
+//
+//   width : 100%;
+//   height : 100%;
+//   min-height : 500px;
+//
+//   div.wrapper {
+//     position : relative;
+//     display : block;
+//     float : left;
+//     width : 100%;
+//     height : 100%;
+//     min-height : 100%;
+//   }
+// }
+//
+//
+// #preloader-bar {
+//   position : fixed;
+//   z-index : 999;
+//   display : block;
+//   float : left;
+//   width : 100%;
+//   height : 15px;
+//   transform-origin: top left;
+//   background : rgba(255,255,255,0.2);
+//
+//   div.percentage {
+//     width : 100%;
+//     height : 100%;
+//     position : fixed;
+//     transform-origin: top left;
+//     background: rgba(255,255,255,0.1);
+//   }
+// }
+
+
+#preloader {
+  position : fixed;
+  top : 0px;
+  left : 0px;
+  width : 100vw;
+  height : 100vw;
+  display : block;
+
+  svg#logo-preloader {
+    position : absolute;
+    height: 8vh;
+    width : 8vh * 3.93;
+    top : 46vh;
+    left : 5vw;
+    path{fill : #000000 !important;}
+  }
+
+  div.bar {
+    position : absolute;
+    top : 0px;
+    width : 100vw;
+    height : 3px;
+    background : rgba(0,0,0,0.2);
+    transform-origin: 0px 0px;
+    left : 0px;
+
+    div.percentage {
+      position : absolute;
+      top : 0px;
+      left : 0px;
+      transform-origin: 0px 0px;
+      background : #000;
+      width : 100vw;
+      height : 3px;
+    }
+  }
+}
+
+
+.screen-changes-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.screen-changes-enter.screen-changes-enter-active {
+  opacity: 1;
+}
+
+.screen-changes-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.screen-changes-leave.screen-changes-leave-active {
+  opacity: 0;
+}

@@ -1,0 +1,58 @@
+{
+  "menu_about": {
+    "ptbr" : "minha história",
+    "enus" : "about me"
+  },
+  "menu_portfolio": {
+    "ptbr" : "portfólio",
+    "enus" : "portfolio"
+  },
+  "menu_contact": {
+    "ptbr" : "contato",
+    "enus" : "contact"
+  },
+  "contact_title": {
+    "ptbr" : "contato",
+    "enus" : "contact"
+  },
+  "contact_email": {
+    "ptbr" : "e-mail",
+    "enus" : "e-mail"
+  },
+  "contact_phone": {
+    "ptbr" : "telefone",
+    "enus" : "phone"
+  },
+  "contact_location": {
+    "ptbr" : "local",
+    "enus" : "location"
+  },
+  "contact_pleasefill": {
+    "ptbr" : "ou, por favor, preencha o formulário abaixo.",
+    "enus" : "or, please, fill in the form bellow."
+  },
+  "contact_name": {
+    "ptbr" : "nome",
+    "enus" : "name"
+  },
+  "contact_message": {
+    "ptbr" : "mensagem",
+    "enus" : "message"
+  },
+  "contact_send": {
+    "ptbr" : "enviar",
+    "enus" : "send"
+  },
+  "aboutme_title": {
+    "ptbr" : "minha história",
+    "enus" : "about me"
+  },
+  "scrolldown": {
+    "ptbr" : "role para baixo",
+    "enus" : "scroll down"
+  },
+  "back": {
+    "ptbr" : "< voltar",
+    "enus" : "< back"
+  },
+}
