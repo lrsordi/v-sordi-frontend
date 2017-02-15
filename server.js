@@ -26,7 +26,7 @@ app.set('view engine', 'html');
 
 app.get('*', function(req, res, next) {
   var fullUrl = req.protocol + '://' + req.get('host');
-  res.render(__dirname + "/app/index.html", {root_url : fullUrl, api_url : "http://localhost:3001/"});
+  res.render(__dirname + "/app/index.html", {root_url : fullUrl, api_url : "http://localhost:3000/"});
   //res.status(404).send('Sorry cant find that!');
 });
 

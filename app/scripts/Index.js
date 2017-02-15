@@ -6,6 +6,7 @@ var Globals = require('./core/Globals');
 require('gsap');
 var MobileDetect = require('mobile-detect');
 
+var ContentProvider = require('./providers/ContentProvider');
 
 TweenMax.ticker.fps(60);
 
@@ -58,11 +59,66 @@ var Index = function(){
 		queue.loadFile({id : "generalcontacts", src : api_url + "api/generalcontacts", type : createjs.AbstractLoader.JSON});
 		queue.loadFile({id : "categories", src : api_url + "api/categories", type : createjs.AbstractLoader.JSON});
 		queue.loadFile({id : "albums", src : api_url + "api/albums", type : createjs.AbstractLoader.JSON});
+
+		queue.on('progress', onDataProgress);
+		queue.on('fileload', onDataFileComplete);
+		queue.on('complete', onDataQueueComplete);
 		queue.load();
 
 	}
+
+
+	function onDataFileComplete(evt){
+		if(evt.item.id === "texts"){
+			ContentProvider.texts = evt.result;
+		}else if(evt.item.id == "about"){
+			ContentProvider.about = evt.result;
+		}else if(evt.item.id == "generalcontacts"){
+			ContentProvider.generalContacts = evt.result;
+		}else if(evt.item.id == "categories"){
+			ContentProvider.categories = evt.result;
+		}else if(evt.item.id == "albums"){
+			ContentProvider.albums = evt.result;
+		}
+
+	}
+
+	function onDataProgress(evt){
+		TweenMax.to(percentage, 1,{scaleX : evt.progress * 0.3, ease : Expo.easeOut});
+	}
+
+	function onDataQueueComplete(evt){
+		queue.close();
+		queue.destroy();
+		queue.removeAllEventListeners();
+
+		ContentProvider.generateHomeCovers();
+
+		queue = new createjs.LoadQueue(true,"",true);
+
+		for(var i = 0; i < ContentProvider.homeCovers.length; i++){
+			queue.loadFile({id : "homecover", data : {index : i}, src : ContentProvider.homeCovers[i].file, type : createjs.AbstractLoader.JSON});
+		}
+
+		queue.on('progress', onCoverProgress);
+		queue.on('fileload', onCoverFileComplete);
+		// queue.on('complete', onCoverQueueComplete);
+		queue.load();
+	}
+
+	function onCoverProgress(evt){
+		TweenMax.to(percentage, 1,{scaleX : 0.3 + (evt.progress * 0.7), ease : Expo.easeOut});
+	}
+
+	function onCoverFileComplete(evt){
+		console.log(evt);
+		// TweenMax.to(percentage, 1,{scaleX : 0.3 + (evt.progress * 0.7), ease : Expo.easeOut});
+	}
 	//ReactDOM.render((<MainApplication/>), $("#app")[0]);
 }
+
+
+
 
 
 $(window).on('load', function(evt){
