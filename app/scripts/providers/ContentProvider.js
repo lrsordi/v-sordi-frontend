@@ -47,6 +47,17 @@ var ContentProvider = {
     return this.texts[identifier][lang].toString();
   },
 
+  getAboutContent : function(){
+    var lang = this.language;
+    if(lang === "en"){
+      lang = "enus";
+    }else{
+      lang = "ptbr";
+    }
+
+    return this.about["about_"+lang];
+  },
+
   getCategoryTranslatedName : function(obj){
     var lang = this.language;
     if(lang === "en"){

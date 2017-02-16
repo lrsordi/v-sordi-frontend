@@ -11,3 +11,10 @@
     src: url(../fonts/adobe-garamond-pro-bold-webfont.eot);
     src: url(../fonts/adobe-garamond-pro-bold-webfont.eot?#iefix) format("embedded-opentype"), url(../fonts/adobe-garamond-pro-bold-webfont.woff) format("woff"), url(../fonts/adobe-garamond-pro-bold-webfont.ttf) format("truetype")
 }
+
+@font-face {
+    font-family: "adobe-garamond-pro";
+    font-style : italic;
+    src: url(../fonts/adobe-garamond-pro-italic.eot);
+    src: url(../fonts/adobe-garamond-pro-italic.eot?#iefix) format("embedded-opentype"), url(../fonts/adobe-garamond-pro-italic.woff) format("woff"), url(../fonts/adobe-garamond-pro-italic.ttf) format("truetype")
+}

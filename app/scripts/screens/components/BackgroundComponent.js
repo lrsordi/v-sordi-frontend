@@ -13,7 +13,7 @@ var BackgroundComponent = React.createClass({
 
   getInitialState : function(){
     return {
-      isContactOrAbout : this.props.isContactOrAbout || false
+      isContactOrAbout : (this.props.location != "/" && this.props.location.indexOf("portfolio") === -1)
     }
   },
 
@@ -29,19 +29,34 @@ var BackgroundComponent = React.createClass({
     this.$interval = setInterval(this.showNextBackground,5000);
 
     this.showNextBackground(true);
-  },
-
-  componentDidUpdate : function(prevProps, prevState){
 
     var whitelayer = $(ReactDOM.findDOMNode(this.refs.whitelayer));
-
     if(this.state.isContactOrAbout){
       TweenMax.to(whitelayer, 1, {opacity : 1, ease : Linear.easeNone});
     }else{
       TweenMax.to(whitelayer, 1, {opacity : 0, ease : Linear.easeNone});
     }
+  },
 
-    if(this.state.isContactOrAbout){
+  componentWillReceiveProps : function(nextProps){
+    console.log(nextProps);
+    if(nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1){
+      this.setState({isContactOrAbout : true});
+    }else{
+      this.setState({isContactOrAbout:false});
+    }
+  },
+
+  componentDidUpdate : function(prevProps, prevState){
+    var whitelayer = $(ReactDOM.findDOMNode(this.refs.whitelayer));
+
+    if(this.props.location != "/" && this.props.location.indexOf("portfolio") === -1){
+      TweenMax.to(whitelayer, 1, {opacity : 1, ease : Linear.easeNone});
+    }else{
+      TweenMax.to(whitelayer, 1, {opacity : 0, ease : Linear.easeNone});
+    }
+
+    if(this.props.location != "/" && this.props.location.indexOf("portfolio") === -1){
       clearInterval(this.$interval);
       this.$interval = null;
     }else{

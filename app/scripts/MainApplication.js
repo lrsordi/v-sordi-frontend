@@ -5,6 +5,9 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 
 var HomeScreen = require('./screens/HomeScreen');
+var AboutMeScreen = require('./screens/AboutMeScreen');
+var PortfolioScreen = require('./screens/PortfolioScreen');
+var ContactScreen = require('./screens/ContactScreen');
 var MainTemplate = require('./screens/MainTemplate');
 
 
@@ -24,8 +27,12 @@ var MainApplication = React.createClass({
       <Router history={browserHistory}>
           <Route path="/" component={MainTemplate}>
             <IndexRoute component={HomeScreen} />
-            <Route path="/sobre" component={HomeScreen} />
-            <Route path="/contato" component={HomeScreen} />
+            <Route path="/sobre" component={AboutMeScreen} />
+            <Route path="/portfolio" component={PortfolioScreen}>
+              <IndexRoute component={PortfolioScreen} />
+              <Route path=":slug" component={PortfolioScreen}/>
+            </Route>
+            <Route path="/contato" component={ContactScreen} />
           </Route>
       </Router>
     )

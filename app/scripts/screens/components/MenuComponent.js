@@ -9,7 +9,8 @@ var MenuComponent = React.createClass({
 
   getInitialState: function() {
     return {
-      isInternalMenu : this.props.isInternalMenu || false
+      isInternalMenu : this.props.isInternalMenu || false,
+      location : this.props.location
     }
   },
 
@@ -19,6 +20,13 @@ var MenuComponent = React.createClass({
     column.find("svg path").css("fill", color);
     column.find("li a").css("color", color);
     column.find("li.spacer").css("background", color);
+  },
+
+
+  componentWillReceiveProps : function(nextProps){
+    if(nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1){
+      this.setState({isInternalMenu : true});
+    }
   },
 
 
@@ -38,7 +46,7 @@ var MenuComponent = React.createClass({
   render : function(){
 
     var categories = ContentProvider.categories.map(function(evt,item){
-      return <li key={'subcategory' + item.toString()}><a href={"/portfolio/"+evt.slug} target="_self">{ContentProvider.getCategoryTranslatedName(evt)}</a></li>;
+      return <li key={'subcategory' + item.toString()}><Link to={"/portfolio/"+evt.slug}>{ContentProvider.getCategoryTranslatedName(evt)}</Link></li>;
     });
 
 

@@ -16,8 +16,14 @@ var MainTemplate = React.createClass({
 
   getInitialState: function() {
     return {
+      location : this.props.location
+    };
+  },
 
-    }
+  componentWillReceiveProps : function(nextProps){
+    this.setState({
+      location : nextProps.location
+    });
   },
 
   onUpdateBackground : function(color){
@@ -29,10 +35,11 @@ var MainTemplate = React.createClass({
   render : function(){
     return (
       <div className="site-wrapper">
-        <BackgroundComponent onUpdateBackground={this.onUpdateBackground} />
+        <BackgroundComponent onUpdateBackground={this.onUpdateBackground} location={this.state.location.pathname}/>
         <div className="section-container">
+          {React.cloneElement(this.props.children, {})}
         </div>
-        <MenuComponent ref="menu" />
+        <MenuComponent ref="menu" location={this.state.location.pathname} />
       </div>
     )
   }
