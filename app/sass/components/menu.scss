@@ -2,6 +2,9 @@ div.main-menu {
   position : absolute;
   display : block;
   float : left;
+  overflow : hidden;
+  width : 100vw;
+  height : 100vh;
 
   div.left-column {
     position : absolute;
@@ -27,6 +30,7 @@ div.main-menu {
       display : block;
       float : left;
       position : relative;
+      clear : both;
 
       ul {
         margin-top : 5vh;

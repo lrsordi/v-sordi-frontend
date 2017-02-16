@@ -538,7 +538,10 @@ div.background-container {
 div.main-menu {
   position: absolute;
   display: block;
-  float: left; }
+  float: left;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh; }
   div.main-menu div.left-column {
     position: absolute;
     top: 46vh;
@@ -556,7 +559,8 @@ div.main-menu {
     div.main-menu div.left-column nav.main-nav {
       display: block;
       float: left;
-      position: relative; }
+      position: relative;
+      clear: both; }
       div.main-menu div.left-column nav.main-nav ul {
         margin-top: 5vh; }
         div.main-menu div.left-column nav.main-nav ul li {
