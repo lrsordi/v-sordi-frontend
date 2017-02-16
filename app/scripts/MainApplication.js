@@ -24,6 +24,8 @@ var MainApplication = React.createClass({
       <Router history={browserHistory}>
           <Route path="/" component={MainTemplate}>
             <IndexRoute component={HomeScreen} />
+            <Route path="/sobre" component={HomeScreen} />
+            <Route path="/contato" component={HomeScreen} />
           </Route>
       </Router>
     )

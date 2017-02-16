@@ -5,7 +5,7 @@ var React = require('react');
 var Globals = require('./core/Globals');
 require('gsap');
 var MobileDetect = require('mobile-detect');
-
+var StringsHelper = require('./helpers/StringsHelper');
 var ContentProvider = require('./providers/ContentProvider');
 window.ContentProvider = ContentProvider;
 TweenMax.ticker.fps(60);
@@ -30,6 +30,30 @@ var Index = function(){
 		};
 	if(window.mobileDetect.mobile() && !window.mobileDetect.tablet()){
 
+	}
+
+	var p = StringsHelper.getParameterByName("language");
+	if(p){
+		if(p === "pt"){
+			ContentProvider.language = "pt";
+		}else if(p === "en"){
+			ContentProvider.language = "en";
+		}else{
+			ContentProvider.language = "pt";
+		}
+
+		localStorage.setItem("language_vsp", p);
+	}else if(localStorage.getItem("language_vsp")){
+		if(localStorage.getItem("language_vsp") === "pt"){
+			ContentProvider.language = "pt";
+		}else if(localStorage.getItem("language_vsp") === "en"){
+			ContentProvider.language = "en";
+		}else{
+			ContentProvider.language = "pt";
+		}
+	}else{
+		ContentProvider.language = "pt";
+		localStorage.setItem("language_vsp", "pt");
 	}
 
 	initPreloader();
@@ -105,7 +129,7 @@ var Index = function(){
 		}
 
 		for(var q = 0; q < ContentProvider.albums.length; q++){
-			queue.loadFile({id : "albumcover", data : {index : q}, src : window.api_url + ContentProvider.albums[q].cover.path.replace("public/","") + ContentProvider.albums[q].cover.filename, type : createjs.AbstractLoader.IMAGE});
+			queue.loadFile({id : "albumcover", data : {index : q}, src : window.api_url + ContentProvider.albums[q].albumCover.path.replace("public/","") + ContentProvider.albums[q].albumCover.filename, type : createjs.AbstractLoader.IMAGE});
 		}
 
 		queue.on('progress', onCoverProgress);
@@ -120,6 +144,8 @@ var Index = function(){
 
 	function startSite(){
 		ReactDOM.render((<MainApplication/>), $("#app")[0]);
+		preloaderContainer.hide();
+		$("#app").show();
 	}
 
 	function onCoverFileComplete(evt){
@@ -131,7 +157,7 @@ var Index = function(){
 	}
 
 	function onCoverQueueComplete(evt){
-		TweenMax.to(percentage, 0.3,{scaleX : 1, ease : Expo.easeOut, onComplete:endLoading});
+		TweenMax.to(percentage, 0.1,{scaleX : 1, ease : Expo.easeOut, onComplete:endLoading});
 	}
 	//ReactDOM.render((<MainApplication/>), $("#app")[0]);
 }

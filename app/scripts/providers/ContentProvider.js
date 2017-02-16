@@ -1,3 +1,6 @@
+var StringsHelper = require('../helpers/StringsHelper');
+
+
 var ContentProvider = {
   texts : null,
   categories : null,
@@ -5,6 +8,7 @@ var ContentProvider = {
   generalContacts : null,
   albums : null,
   homeCovers : null,
+  language : "pt",
 
   generateHomeCovers : function(){
     var album = [];
@@ -29,6 +33,30 @@ var ContentProvider = {
     }
 
     return null;
+  },
+
+  getTranslatedText : function(identifier){
+    var lang = this.language;
+    if(lang === "en"){
+      lang = "enus";
+    }else{
+      lang = "ptbr";
+    }
+
+
+    return this.texts[identifier][lang].toString();
+  },
+
+  getCategoryTranslatedName : function(obj){
+    var lang = this.language;
+    if(lang === "en"){
+      lang = "title_enus";
+    }else{
+      lang = "title_ptbr";
+    }
+
+
+    return obj[lang].toString();
   }
 }
 

@@ -4,6 +4,9 @@ var Link = require('react-router').Link;
 var Globals = require('../core/Globals');
 var ReactDOM = require('react-dom');
 var browserHistory = require('react-router').browserHistory;
+var MenuComponent = require('./components/MenuComponent');
+var BackgroundComponent = require('./components/BackgroundComponent');
+
 
 
 var MainTemplate = React.createClass({
@@ -13,17 +16,23 @@ var MainTemplate = React.createClass({
 
   getInitialState: function() {
     return {
-      lastUpdated : Globals.NORFOLK_LAST_UPDATED,
-      norfolkData : Globals.NORFOLK_LAST_DATA,
-      loading : false,
-      comparing : false,
-      comparingData : null
+
     }
+  },
+
+  onUpdateBackground : function(color){
+
+    if(this.refs.menu)
+      this.refs.menu.setColor(color);
   },
 
   render : function(){
     return (
-      <div id="forecast-wrapper">
+      <div className="site-wrapper">
+        <BackgroundComponent onUpdateBackground={this.onUpdateBackground} />
+        <div className="section-container">
+        </div>
+        <MenuComponent ref="menu" />
       </div>
     )
   }

@@ -7,11 +7,11 @@ var StringsHelper = {
 	  var chr;
 	  for (var i = uncoded.length - 1; i >= 0; i--) {
 	    chr = uncoded.charCodeAt(i);
-	    coded += (chr >= 65 && chr <= 90) ? 
+	    coded += (chr >= 65 && chr <= 90) ?
 	      this.key.charAt(chr - 65 + 26*Math.floor(Math.random()*2)) :
-	      String.fromCharCode(chr); 
+	      String.fromCharCode(chr);
 	    }
-	  return encodeURIComponent(coded);  
+	  return encodeURIComponent(coded);
 	},
 
 	toTitleCase : function(str)
@@ -24,17 +24,29 @@ var StringsHelper = {
 	},
 
 	decodeString : function(coded) {
-	  coded = decodeURIComponent(coded);  
+	  coded = decodeURIComponent(coded);
 	  var uncoded = "";
 	  var chr;
 	  for (var i = coded.length - 1; i >= 0; i--) {
 	    chr = coded.charAt(i);
 	    uncoded += (chr >= "a" && chr <= "z" || chr >= "A" && chr <= "Z") ?
 	      String.fromCharCode(65 + this.key.indexOf(chr) % 26) :
-	      chr; 
+	      chr;
 	    }
-	  return uncoded;   
-	  } 
+	  return uncoded;
+	},
+
+	getParameterByName : function(name, url) {
+	    if (!url) {
+	      url = window.location.href;
+	    }
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
 }
 
 module.exports = StringsHelper;

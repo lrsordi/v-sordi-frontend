@@ -1,0 +1,70 @@
+div.main-menu {
+  position : absolute;
+  display : block;
+  float : left;
+
+  div.left-column {
+    position : absolute;
+    top : 46vh;
+    left : 5vw;
+
+    h1 {
+      font-size : 0px;
+      display : block;
+      float : left;
+
+      svg {
+        height: 8vh;
+        width : 8vh * 3.93;
+
+        path {
+          transition: fill 0.5s linear;
+        }
+      }
+    }
+
+    nav.main-nav {
+      display : block;
+      float : left;
+      position : relative;
+
+      ul {
+        margin-top : 5vh;
+        li {
+          position : relative;
+          clear : both;
+          float : left;
+
+          a {
+            font-family: 'adobe-garamond-pro';
+            color : #000;
+            font-size : 2.3vh;
+            padding-top : 3.9vh;
+            padding-bottom : 3.9vh;
+            display : block;
+            padding-left : 3vh;
+            transition : color 0.5s linear;
+
+
+            span:not(:first-child){
+              color : #fff;
+              position : absolute;
+              top : 3.9vh;
+              background : #000;
+              padding-left : 1vh;
+              margin-left : -1vh;
+            }
+          }
+
+          &.spacer {
+            display : block;
+            width : 3vh;
+            height: 1px;
+            background : #000;
+            transition : background 0.5s linear;
+          }
+        }
+      }
+    }
+  }
+}

@@ -389,6 +389,7 @@ table {
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
 
 html,
@@ -396,7 +397,6 @@ body {
   height: 100%; }
 
 body {
-  font-family: 'petrobras_sansitalic', arial, helvetica, sans-serif;
   color: #008542;
   font-size: 14px; }
 
@@ -439,6 +439,21 @@ html, body {
   overflow-x: hidden;
   overflow-y: scroll; }
 
+#app {
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px; }
+  #app div.wrapper {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100%;
+    min-height: 100%; }
+
 #preloader {
   position: fixed;
   top: 0px;
@@ -473,6 +488,29 @@ html, body {
       width: 100vw;
       height: 3px; }
 
+div.background-container {
+  position: fixed;
+  top: 0px;
+  left: 0px; }
+  div.background-container div.backgrounds {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh; }
+  div.background-container div.image-item {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover; }
+  div.background-container div.white-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.58); }
+
 .screen-changes-enter {
   opacity: 0.01;
   -webkit-transition: opacity .5s ease-in;
@@ -488,3 +526,56 @@ html, body {
 
 .screen-changes-leave.screen-changes-leave-active {
   opacity: 0; }
+
+div.main-menu {
+  position: absolute;
+  display: block;
+  float: left; }
+  div.main-menu div.left-column {
+    position: absolute;
+    top: 46vh;
+    left: 5vw; }
+    div.main-menu div.left-column h1 {
+      font-size: 0px;
+      display: block;
+      float: left; }
+      div.main-menu div.left-column h1 svg {
+        height: 8vh;
+        width: 31.44vh; }
+        div.main-menu div.left-column h1 svg path {
+          -webkit-transition: fill 0.5s linear;
+          transition: fill 0.5s linear; }
+    div.main-menu div.left-column nav.main-nav {
+      display: block;
+      float: left;
+      position: relative; }
+      div.main-menu div.left-column nav.main-nav ul {
+        margin-top: 5vh; }
+        div.main-menu div.left-column nav.main-nav ul li {
+          position: relative;
+          clear: both;
+          float: left; }
+          div.main-menu div.left-column nav.main-nav ul li a {
+            font-family: 'adobe-garamond-pro';
+            color: #000;
+            font-size: 2.3vh;
+            padding-top: 3.9vh;
+            padding-bottom: 3.9vh;
+            display: block;
+            padding-left: 3vh;
+            -webkit-transition: color 0.5s linear;
+            transition: color 0.5s linear; }
+            div.main-menu div.left-column nav.main-nav ul li a span:not(:first-child) {
+              color: #fff;
+              position: absolute;
+              top: 3.9vh;
+              background: #000;
+              padding-left: 1vh;
+              margin-left: -1vh; }
+          div.main-menu div.left-column nav.main-nav ul li.spacer {
+            display: block;
+            width: 3vh;
+            height: 1px;
+            background: #000;
+            -webkit-transition: background 0.5s linear;
+            transition: background 0.5s linear; }
