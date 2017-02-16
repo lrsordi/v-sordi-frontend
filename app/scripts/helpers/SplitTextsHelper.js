@@ -236,7 +236,7 @@ var SplitTextsHelper = {
     var span1 = scope.append("<span>"+txt+"</span>");
     var span2 = scope.append("<span>"+txt+"</span>");
 
-    var mySplit = new SplitText(scope.find("span")[0], {type : "chars", position : "relative"});
+    // var mySplit = new SplitText(scope.find("span")[0], {type : "chars", position : "relative"});
     var mySplit2 = new SplitText(scope.find("span")[1], {type : "chars", position : "relative"});
     var pseudoguid = new Date().getTime();
     scope.attr("pseudo-id", pseudoguid);
@@ -255,7 +255,7 @@ var SplitTextsHelper = {
     }
 
 
-    this.splitsHoverIn[pseudoguid] = mySplit;
+    // this.splitsHoverIn[pseudoguid] = mySplit;
     this.splitsHoverOut[pseudoguid] = mySplit2;
   },
 
@@ -282,19 +282,26 @@ var SplitTextsHelper = {
 
   onOverButton : function(evt){
     var guid = evt.currentTarget.getAttribute("pseudo-id");
-    var split = SplitTextsHelper.splitsHoverIn[guid];
+    // var split = SplitTextsHelper.splitsHoverIn[guid];
     var el2 = $($(evt.currentTarget).find("span")[1]);
     var el1 = $($(evt.currentTarget).find("span")[0]);
     var splitOut = SplitTextsHelper.splitsHoverOut[guid];
 
     TweenMax.to(el2, 0.5, {width : el1.width()+Math.ceil($(window).height()*0.01), opacity:1, x : 0, ease : Expo.easeOut});
     TweenMax.set(el2, {height : el1.height()});
+
+    //if(evt.clientX != undefined)
+    TweenMax.killTweensOf(splitOut.chars);
     TweenMax.staggerFromTo(splitOut.chars, 0.5, {x : 30, opacity : 0}, {x : 0, opacity:1, ease : Quad.easeInOut}, 0.015);
+
     //TweenMax.staggerTo(splitOut.chars, 0.5, {y:0, autoAlpha:1, ease : Expo.easeInOut}, 0.01);
     //TweenMax.to($(splitOut.chars[0]).parent(), 0.5, {opacity : 1});
   },
 
   onOutButton : function(evt){
+    if($(evt.currentTarget).hasClass("selected") && evt.clientX != undefined){
+      return;
+    }
     if(evt.type != 'mouseleave'){
       $(evt.currentTarget).blur();
       $("body").trigger("click");
@@ -304,7 +311,7 @@ var SplitTextsHelper = {
     var el2 = $($(evt.currentTarget).find("span")[1]);
     TweenMax.to(el2, 0.5, {width : 0, opacity:0, x : -10, ease : Expo.easeOut});
     var guid = evt.currentTarget.getAttribute("pseudo-id");
-    var split = SplitTextsHelper.splitsHoverIn[guid];
+    // var split = SplitTextsHelper.splitsHoverIn[guid];
     var splitOut = SplitTextsHelper.splitsHoverOut[guid];
     TweenMax.staggerTo(splitOut.chars, 0.5, {x : -30, opacity:0, ease : Quad.easeInOut}, 0.015);
   }

@@ -7,9 +7,13 @@ var classNames = require('classnames');
 
 var HomeScreen = React.createClass({
 
+		componentDidMount : function(){
+			document.title = "valéria sordi photography //";
+		},
+
 		render : function(){
 			return (
-				
+				<div></div>
 			)
 		}
 });

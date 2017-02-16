@@ -23,6 +23,26 @@ var AboutMeScreen = React.createClass({
 			TweenMax.fromTo(spacer, 1, {x : -10, scaleX : 0}, {x : 0, scaleX : 1, ease : Expo.easeInOut, delay:0.3});
 
 			TweenMax.fromTo(content, 1, {x : -10, opacity:0}, {x : 0, opacity : 1, ease : Expo.easeInOut, delay : 1});
+
+			document.title = "valéria sordi photography // " + ContentProvider.getTranslatedText("aboutme_title");
+		},
+
+		componentWillUnmount : function(){
+
+
+			var title = $(ReactDOM.findDOMNode(this.refs.title));
+			var spacer = $(ReactDOM.findDOMNode(this.refs.spacer));
+			var content = $(ReactDOM.findDOMNode(this.refs.content));
+
+			TweenMax.killChildTweensOf(title);
+			TweenMax.killTweensOf(spacer);
+			TweenMax.killTweensOf(content);
+
+
+			this.titleSplit.revert();
+			this.titleSplit = null;
+
+
 		},
 
 

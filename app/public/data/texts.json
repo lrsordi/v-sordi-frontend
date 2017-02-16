@@ -1,18 +1,18 @@
 {
   "menu_about": {
-    "ptbr" : "minha história",
-    "enus" : "about me"
+    "ptbr" : "minha história&nbsp;",
+    "enus" : "about me&nbsp;"
   },
   "menu_portfolio": {
-    "ptbr" : "portfólio",
-    "enus" : "portfolio"
+    "ptbr" : "portfólio&nbsp;",
+    "enus" : "portfolio&nbsp;"
   },
   "menu_contact": {
-    "ptbr" : "contato",
-    "enus" : "contact"
+    "ptbr" : "contato&nbsp;",
+    "enus" : "contact&nbsp;"
   },
   "contact_title": {
-    "ptbr" : "contato",
+    "ptbr" : "contato ",
     "enus" : "contact"
   },
   "contact_email": {
@@ -42,6 +42,22 @@
   "contact_send": {
     "ptbr" : "enviar",
     "enus" : "send"
+  },
+  "contact_sending": {
+    "ptbr" : "enviando...",
+    "enus" : "sending..."
+  },
+  "contact_fillall": {
+    "ptbr" : "por favor, preencha todos os campos.",
+    "enus" : "please fill in all fields."
+  },
+  "contact_success": {
+    "ptbr" : "Seu contato foi enviado com sucesso! Em breve responderei =).",
+    "enus" : "Your message have been sent successfully. I will answer soon =)."
+  },
+  "contact_error": {
+    "ptbr" : "Ocorreu um erro. Tente novamente.",
+    "enus" : "An error occurred. Please, try again."
   },
   "aboutme_title": {
     "ptbr" : "minha história",

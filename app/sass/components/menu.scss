@@ -2,9 +2,7 @@ div.main-menu {
   position : absolute;
   display : block;
   float : left;
-  overflow : hidden;
-  width : 100vw;
-  height : 100vh;
+
 
   div.left-column {
     position : absolute;
@@ -49,6 +47,10 @@ div.main-menu {
             padding-left : 3vh;
             transition : color 0.5s linear;
 
+            &.selected {
+              pointer-events : none;
+            }
+
 
             span:not(:first-child){
               color : #fff;
@@ -57,6 +59,7 @@ div.main-menu {
               background : #000;
               padding-left : 1vh;
               margin-left : -1vh;
+              left : 3vh;
             }
           }
 

@@ -82,6 +82,10 @@ gulp.task('uglify', ['browserify-client'], function() {
 gulp.task('styles', function() {
   return gulp.src('app/sass/main.scss')
     .pipe(sass())
+    .on('error', function (err) {
+            console.log(err.toString());
+            this.emit("end");
+        })
     .pipe(prefix({ cascade: true }))
     .on('error', function (err) {
             console.log(err.toString());

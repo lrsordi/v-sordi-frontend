@@ -10,7 +10,7 @@ var MenuComponent = React.createClass({
   getInitialState: function() {
     return {
       isInternalMenu : this.props.isInternalMenu || false,
-      location : this.props.location
+      location : this.props.location || "/"
     }
   },
 
@@ -24,9 +24,35 @@ var MenuComponent = React.createClass({
 
 
   componentWillReceiveProps : function(nextProps){
-    if(nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1){
-      this.setState({isInternalMenu : true});
-    }
+    this.setState(
+      {
+        isInternalMenu : (nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1),
+        location : nextProps.location
+      });
+
+      var column = $(ReactDOM.findDOMNode(this.refs.leftcolumn));
+
+      $(column).find("li a").each(function(el){
+        if(nextProps.location == $(this).attr("href")){
+          $(this).trigger("mouseover");
+        }else{
+          $(this).trigger("mouseout");
+        }
+      });
+
+  },
+
+
+  selectFirstLink : function(){
+    var column = $(ReactDOM.findDOMNode(this.refs.leftcolumn));
+    var self = this;
+    $(column).find("li a").each(function(el){
+      if(self.state.location == $(this).attr("href")){
+        $(this).trigger("mouseover");
+      }else{
+        $(this).trigger("mouseout");
+      }
+    });
   },
 
 
@@ -35,10 +61,18 @@ var MenuComponent = React.createClass({
 
     if(!this.state.isInternalMenu){
       TweenMax.to(column, 1.5, {y : "-50%", /*top : "50vh",*/ ease : Quint.easeInOut});
-      TweenMax.staggerFromTo($(column).find("li"), 1, {y : 50, opacity : 0, delay:0.5}, {y : 0, opacity : 1, ease : Expo.easeInOut},0.1);
+      TweenMax.staggerFromTo($(column).find("li"), 1, {y : 50, opacity : 0, delay:0.5}, {y : 0, opacity : 1, ease : Expo.easeInOut, onComplete:this.selectFirstLink},0.1);
     }
+
+    var self = this;
     $(column).find("li a").each(function(el){
         SplitTextsHelper.initMainMenuHover($(this));
+        if(self.state.location == $(this).attr("href")){
+          console.log(self.state.location + " " + $(this).attr("href"));
+          $(this).trigger("mouseover");
+        }else{
+          $(this).trigger("mouseout");
+        }
     })
 
   },
@@ -63,11 +97,11 @@ var MenuComponent = React.createClass({
           </h1></Link>
           <nav className="main-nav">
             <ul>
-              <li><Link to="/sobre" title={ContentProvider.getTranslatedText("menu_about")}>{ContentProvider.getTranslatedText("menu_about")}</Link></li>
+              <li><Link to="/sobre" className={this.state.location.indexOf("sobre") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_about")}>{ContentProvider.getTranslatedText("menu_about")}</Link></li>
               <li className="spacer"></li>
-              <li><Link to="/portfolio" title={ContentProvider.getTranslatedText("menu_portfolio")}>{ContentProvider.getTranslatedText("menu_portfolio")}</Link></li>
+              <li><Link to="/portfolio" className={this.state.location.indexOf("portfolio") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_portfolio")}>{ContentProvider.getTranslatedText("menu_portfolio")}</Link></li>
               <li className="spacer"></li>
-              <li><Link to="/contato" title={ContentProvider.getTranslatedText("menu_contact")}>{ContentProvider.getTranslatedText("menu_contact")}</Link></li>
+              <li><Link to="/contato" className={this.state.location.indexOf("contato") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_contact")}>{ContentProvider.getTranslatedText("menu_contact")}</Link></li>
             </ul>
           </nav>
         </div>

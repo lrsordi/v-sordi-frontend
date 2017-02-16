@@ -36,10 +36,10 @@ var MainTemplate = React.createClass({
     return (
       <div className="site-wrapper">
         <BackgroundComponent onUpdateBackground={this.onUpdateBackground} location={this.state.location.pathname}/>
+        <MenuComponent ref="menu" location={this.state.location.pathname} />
         <div className="section-container">
           {React.cloneElement(this.props.children, {})}
         </div>
-        <MenuComponent ref="menu" location={this.state.location.pathname} />
       </div>
     )
   }

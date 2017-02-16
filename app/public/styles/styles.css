@@ -538,10 +538,7 @@ div.background-container {
 div.main-menu {
   position: absolute;
   display: block;
-  float: left;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh; }
+  float: left; }
   div.main-menu div.left-column {
     position: absolute;
     top: 46vh;
@@ -577,13 +574,16 @@ div.main-menu {
             padding-left: 3vh;
             -webkit-transition: color 0.5s linear;
             transition: color 0.5s linear; }
+            div.main-menu div.left-column nav.main-nav ul li a.selected {
+              pointer-events: none; }
             div.main-menu div.left-column nav.main-nav ul li a span:not(:first-child) {
               color: #fff;
               position: absolute;
               top: 3.9vh;
               background: #000;
               padding-left: 1vh;
-              margin-left: -1vh; }
+              margin-left: -1vh;
+              left: 3vh; }
           div.main-menu div.left-column nav.main-nav ul li.spacer {
             display: block;
             width: 3vh;
@@ -593,9 +593,7 @@ div.main-menu {
             transition: background 0.5s linear; }
 
 section#about {
-  position: absolute;
-  width: 100vw;
-  min-height: 100vh; }
+  position: absolute; }
   section#about div.column-content {
     display: block;
     position: absolute;
@@ -632,3 +630,143 @@ section#about {
       font-style: italic;
       font-family: 'adobe-garamond-pro';
       line-height: 25px; }
+
+section#contact {
+  position: absolute; }
+  section#contact div.column-content {
+    display: block;
+    position: absolute;
+    left: 30vw;
+    width: 60vw;
+    top: 27vh; }
+    section#contact div.column-content h2 {
+      font-family: 'adobe-garamond-pro';
+      font-weight: bold;
+      font-size: 18px;
+      color: #000;
+      display: block;
+      float: left;
+      position: relative; }
+    section#contact div.column-content div.spacer {
+      display: block;
+      float: left;
+      position: relative;
+      clear: both;
+      margin-top: 2.5vh;
+      width: 5vh;
+      height: 1px;
+      background: #000;
+      margin-bottom: 2.5vh;
+      -webkit-transform-origin: 0px 0px;
+              transform-origin: 0px 0px; }
+    section#contact div.column-content div.content {
+      clear: both;
+      float: left;
+      margin-top: 2.5vh; }
+      section#contact div.column-content div.content span {
+        display: inline-block;
+        float: left;
+        font-size: 18px;
+        color: #000000; }
+        section#contact div.column-content div.content span a {
+          color: #000 !important;
+          font-family: 'adobe-garamond-pro';
+          font-weight: bold;
+          display: inline-block;
+          float: left;
+          margin-left: 10px;
+          display: inline-block;
+          float: left;
+          position: relative; }
+          section#contact div.column-content div.content span a span:not(:first-child) {
+            color: #fff;
+            position: absolute;
+            background: #000;
+            padding-left: 1vh;
+            left: 0px;
+            display: block;
+            margin-left: -1vh; }
+        section#contact div.column-content div.content span.italic {
+          font-family: 'adobe-garamond-pro';
+          font-style: italic; }
+        section#contact div.column-content div.content span.newline {
+          margin-top: 1.5vh;
+          clear: both; }
+          section#contact div.column-content div.content span.newline + span a {
+            margin-top: 1.5vh; }
+    section#contact div.column-content div.content-form {
+      display: block;
+      clear: both;
+      float: left;
+      margin-top: 3.5vh; }
+      section#contact div.column-content div.content-form.sending input, section#contact div.column-content div.content-form.sending textarea, section#contact div.column-content div.content-form.sending button {
+        pointer-events: none !important;
+        opacity: 0.6; }
+      section#contact div.column-content div.content-form span.fill-in {
+        font-family: 'adobe-garamond-pro';
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 0.5vh;
+        margin-top: 2.5vh;
+        clear: both;
+        position: relative;
+        float: left; }
+      section#contact div.column-content div.content-form button, section#contact div.column-content div.content-form span.sending {
+        display: block;
+        clear: both;
+        float: left;
+        position: relative;
+        color: #000;
+        font-size: 18px;
+        padding: 10px;
+        border: none;
+        display: block;
+        background: none;
+        font-family: adobe-garamond-pro;
+        font-weight: bold;
+        margin-top: 1vh;
+        outline: none; }
+        section#contact div.column-content div.content-form button span:not(:first-child), section#contact div.column-content div.content-form span.sending span:not(:first-child) {
+          color: #fff;
+          position: absolute;
+          background: #000;
+          padding-left: 0px;
+          left: 0px;
+          display: block;
+          margin-left: 0px;
+          top: 1vh; }
+      section#contact div.column-content div.content-form input, section#contact div.column-content div.content-form textarea {
+        clear: both;
+        float: left;
+        position: relative;
+        font-family: adobe-garamond-pro;
+        font-style: italic;
+        font-size: 18px;
+        width: 30vw;
+        padding: 10px;
+        background: none;
+        border: none;
+        outline: none;
+        color: #000;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        margin-top: 1vh; }
+        section#contact div.column-content div.content-form input::-webkit-input-placeholder, section#contact div.column-content div.content-form textarea::-webkit-input-placeholder {
+          /* WebKit, Blink, Edge */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-moz-placeholder, section#contact div.column-content div.content-form textarea:-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input::-moz-placeholder, section#contact div.column-content div.content-form textarea::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-ms-input-placeholder, section#contact div.column-content div.content-form textarea:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+      section#contact div.column-content div.content-form textarea {
+        height: 10vh;
+        resize: none; }
