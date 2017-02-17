@@ -39,7 +39,6 @@ var BackgroundComponent = React.createClass({
   },
 
   componentWillReceiveProps : function(nextProps){
-    console.log(nextProps);
     if(nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1){
       this.setState({isContactOrAbout : true});
     }else{
@@ -56,21 +55,22 @@ var BackgroundComponent = React.createClass({
       TweenMax.to(whitelayer, 1, {opacity : 0, ease : Linear.easeNone});
     }
 
-    if(this.props.location != "/" && this.props.location.indexOf("portfolio") === -1){
+    if(this.props.location.indexOf("portfolio") > -1){
       clearInterval(this.$interval);
       this.$interval = null;
     }else{
       if(this.$interval == null){
         this.$interval = setInterval(this.showNextBackground,5000);
+        TweenMax.fromTo(ReactDOM.findDOMNode(this.refs.backgroundcontainer), 1, {opacity : 0}, {opacity : 1});
       }
     }
   },
 
-  componentWillReceiveProps : function(nextProps){
-    this.setState({
-      isContactOrAbout : nextProps.isContactOrAbout
-    });
-  },
+  // componentWillReceiveProps : function(nextProps){
+  //   this.setState({
+  //     isContactOrAbout : nextProps.isContactOrAbout
+  //   });
+  // },
 
   showNextBackground : function(force){
 
@@ -84,10 +84,22 @@ var BackgroundComponent = React.createClass({
     var container = $(ReactDOM.findDOMNode(this.refs.backgroundcontainer));
     var el = $(container.find("div.image-item")[this.$currentElement]);
 
-    if(this.$currentElement === 0)
+    if(this.$currentElement === 0){
       el.css("z-index", this.$lastZIndex);
-    else
-      $(container.find("div.image-item")[0]).css("z-index","");
+
+      var self = this;
+      container.find("div.image-item").each(function(id,el){
+        if(id > self.$currentElement){
+          TweenMax.killTweensOf($(this));
+          TweenMax.set($(this), {opacity : 0});
+        }
+      });
+    }
+    else{
+      $(container.find("div.image-item")).each(function(id,el){
+        $(this).css("z-index",id);
+      });
+    }
 
     el.show();
     TweenMax.fromTo(el, 1, {opacity : 0}, {opacity : 1, ease : Linear.easeNone});

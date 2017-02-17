@@ -35,6 +35,17 @@ var ContentProvider = {
     return null;
   },
 
+  getAlbumByCategory : function(slug){
+    var album;
+    for(var i = 0; i < this.albums.length; i++){
+      album = this.albums[i];
+      if(album.category.slug === slug)
+        return album;
+    }
+
+    return null;
+  },
+
   getTranslatedText : function(identifier){
     var lang = this.language;
     if(lang === "en"){
@@ -64,6 +75,18 @@ var ContentProvider = {
       lang = "title_enus";
     }else{
       lang = "title_ptbr";
+    }
+
+
+    return obj[lang].toString();
+  },
+
+  getCategoryTranslatedContent : function(obj){
+    var lang = this.language;
+    if(lang === "en"){
+      lang = "about_enus";
+    }else{
+      lang = "about_ptbr";
     }
 
 

@@ -128,9 +128,17 @@ var Index = function(){
 			queue.loadFile({id : "homecover", data : {index : i}, src : ContentProvider.homeCovers[i].file, type : createjs.AbstractLoader.IMAGE});
 		}
 
+		var album;
 		for(var q = 0; q < ContentProvider.albums.length; q++){
-			queue.loadFile({id : "albumcover", data : {index : q}, src : window.api_url + ContentProvider.albums[q].albumCover.path.replace("public/","") + ContentProvider.albums[q].albumCover.filename, type : createjs.AbstractLoader.IMAGE});
+			album = ContentProvider.albums[q];
+
+			queue.loadFile({id : "albumcover", data : {index : q}, src : window.api_url + album.albumCover.path.replace("public/","") + album.albumCover.filename, type : createjs.AbstractLoader.IMAGE});
+
+			for(var z = 0; z < album.photosLowQuality.length; z++){
+				queue.loadFile({id : "photolowquality", data : {index : z, album : q}, src : window.api_url + album.photosLowQuality[z].path.replace("public/","") + album.photosLowQuality[z].filename, type : createjs.AbstractLoader.IMAGE});
+			}
 		}
+
 
 		queue.on('progress', onCoverProgress);
 		queue.on('fileload', onCoverFileComplete);
@@ -153,6 +161,8 @@ var Index = function(){
 			ContentProvider.homeCovers[evt.item.data.index].image = evt.result;
 		}else if(evt.item.id === "albumcover"){
 			ContentProvider.albums[evt.item.data.index].coverImage = evt.result;
+		}else if(evt.item.id === "photolowquality"){
+			ContentProvider.albums[evt.item.data.album].photosLowQuality[evt.item.data.index].image = evt.result;
 		}
 	}
 

@@ -392,12 +392,8 @@ table {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
 
-html,
 body {
-  height: 100%; }
-
-body {
-  color: #008542;
+  color: #000000;
   font-size: 14px; }
 
 a {
@@ -440,7 +436,6 @@ html, body {
   display: block;
   float: left;
   width: 100%;
-  height: 100%;
   background: #ffffff;
   overflow-x: hidden;
   overflow-y: scroll; }
@@ -450,17 +445,16 @@ html, body {
   float: left;
   position: relative;
   width: 100%;
-  height: 100%;
   min-height: 500px; }
   #app div.site-wrapper {
     position: relative;
     display: block;
     float: left;
     width: 100%;
-    height: 100%;
     min-height: 100%; }
     #app div.site-wrapper div.section-container {
-      position: absolute; }
+      position: absolute;
+      top: 0px; }
 
 #preloader {
   position: fixed;
@@ -540,7 +534,7 @@ div.main-menu {
   display: block;
   float: left; }
   div.main-menu div.left-column {
-    position: absolute;
+    position: fixed;
     top: 46vh;
     left: 5vw; }
     div.main-menu div.left-column h1 {
@@ -567,7 +561,7 @@ div.main-menu {
           div.main-menu div.left-column nav.main-nav ul li a {
             font-family: 'adobe-garamond-pro';
             color: #000;
-            font-size: 18px;
+            font-size: 20px;
             padding-top: 3.9vh;
             padding-bottom: 3.9vh;
             display: block;
@@ -591,9 +585,39 @@ div.main-menu {
             background: #000;
             -webkit-transition: background 0.5s linear;
             transition: background 0.5s linear; }
+  div.main-menu nav.categories-nav {
+    position: fixed;
+    top: 10vh;
+    left: 25vw; }
+    div.main-menu nav.categories-nav ul {
+      display: inline-block;
+      float: left;
+      position: relative; }
+      div.main-menu nav.categories-nav ul li {
+        display: inline-block;
+        float: left;
+        padding: 0px 2vw; }
+        div.main-menu nav.categories-nav ul li a {
+          font-size: 20px;
+          font-family: 'adobe-garamond-pro';
+          text-align: center;
+          display: block;
+          float: left;
+          position: relative;
+          width: 100%;
+          color: #000; }
+          div.main-menu nav.categories-nav ul li a.selected {
+            pointer-events: none; }
+          div.main-menu nav.categories-nav ul li a span:not(:first-child) {
+            color: #fff;
+            position: absolute;
+            background: #000;
+            margin-left: -1vh;
+            left: 0px; }
 
 section#about {
-  position: absolute; }
+  position: absolute;
+  top: 0px; }
   section#about div.column-content {
     display: block;
     position: absolute;
@@ -632,7 +656,8 @@ section#about {
       line-height: 25px; }
 
 section#contact {
-  position: absolute; }
+  position: absolute;
+  top: 0px; }
   section#contact div.column-content {
     display: block;
     position: absolute;
@@ -770,3 +795,101 @@ section#contact {
       section#contact div.column-content div.content-form textarea {
         height: 10vh;
         resize: none; }
+
+section#portfolio {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  background: #fff;
+  width: 100vw;
+  height: 100vh; }
+  section#portfolio section.portfolio-area {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh; }
+    section#portfolio section.portfolio-area div.area-cover {
+      position: fixed;
+      top: 0px;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat; }
+      section#portfolio section.portfolio-area div.area-cover div.white-layer {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.9);
+        opacity: 0; }
+    section#portfolio section.portfolio-area div.area-details {
+      background: #fff;
+      width: 100vw;
+      left: 0vw;
+      padding: 3vh;
+      position: absolute;
+      top: 90vh;
+      z-index: 3;
+      overflow: hidden; }
+      section#portfolio section.portfolio-area div.area-details h2 {
+        font-size: 20px;
+        font-family: 'adobe-garamond-pro';
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        display: block;
+        position: relative;
+        color: #000; }
+      section#portfolio section.portfolio-area div.area-details div.content {
+        display: block;
+        float: left;
+        font-size: 20px;
+        font-family: 'adobe-garamond-pro';
+        font-style: italic;
+        width: 100%;
+        text-align: center;
+        margin-top: 2.5vh;
+        color: #000; }
+    section#portfolio section.portfolio-area div.area-photos {
+      position: absolute;
+      top: 100vh; }
+      section#portfolio section.portfolio-area div.area-photos div.photo-item {
+        position: relative;
+        display: block;
+        float: left;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; }
+        section#portfolio section.portfolio-area div.area-photos div.photo-item div.bar {
+          top: 50%;
+          height: 1px;
+          width: 30vw;
+          left: 35vw;
+          background: rgba(0, 0, 0, 0.3);
+          position: relative; }
+          section#portfolio section.portfolio-area div.area-photos div.photo-item div.bar div.percentage {
+            display: block;
+            background: #000;
+            width: 30vw;
+            height: 1px;
+            -webkit-transform-origin: 0px 0px;
+                    transform-origin: 0px 0px;
+            -webkit-transform: scaleX(0);
+                    transform: scaleX(0); }
+        section#portfolio section.portfolio-area div.area-photos div.photo-item div.photo-real {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100vw;
+          height: 100vh;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          opacity: 0; }

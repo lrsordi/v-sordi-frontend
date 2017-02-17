@@ -5,7 +5,7 @@ div.main-menu {
 
 
   div.left-column {
-    position : absolute;
+    position : fixed;
     top : 46vh;
     left : 5vw;
 
@@ -40,7 +40,7 @@ div.main-menu {
           a {
             font-family: 'adobe-garamond-pro';
             color : #000;
-            font-size : 18px;
+            font-size : 20px;
             padding-top : 3.9vh;
             padding-bottom : 3.9vh;
             display : block;
@@ -69,6 +69,49 @@ div.main-menu {
             height: 1px;
             background : #000;
             transition : background 0.5s linear;
+          }
+        }
+      }
+    }
+  }
+
+
+  nav.categories-nav {
+    position : fixed;
+    top : 10vh;
+    left : 25vw;
+
+    ul {
+      display : inline-block;
+      float : left;
+      position : relative;
+
+      li {
+        display: inline-block;
+        float : left;
+        padding : 0px 2vw;
+
+        a {
+          font-size: 20px;
+          font-family: 'adobe-garamond-pro';
+          text-align : center;
+          display : block;
+          float : left;
+          position : relative;
+          width : 100%;
+          color : #000;
+
+          &.selected {
+            pointer-events : none;
+          }
+
+          span:not(:first-child){
+            color : #fff;
+            position : absolute;
+
+            background : #000;
+            margin-left : -1vh;
+            left : 0px;
           }
         }
       }

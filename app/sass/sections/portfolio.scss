@@ -1,0 +1,126 @@
+section#portfolio{
+  position : fixed;
+  top : 0px;
+  left : 0px;
+  overflow : hidden;
+  background: #fff;
+  width : 100vw;
+  height : 100vh;
+
+  section.portfolio-area{
+    position : fixed;
+    top : 0px;
+    left : 0px;
+    width : 100vw;
+    height : 100vh;
+
+    div.area-cover {
+      position : fixed;
+      top : 0px;
+      width : 100vw;
+      height : 100vh;
+      background-size : cover;
+      background-position : center center;
+      background-repeat : no-repeat;
+
+      div.white-layer {
+        position : absolute;
+        top : 0px;
+        left : 0px;
+        width : 100vw;
+        height: 100vh;
+        background : rgba(255,255,255,0.9);
+        opacity : 0;
+      }
+    }
+
+    div.area-details {
+      background : #fff;
+      width: 100vw;
+      left : 0vw;
+      padding : 3vh;
+      position : absolute;
+      top : 90vh;
+      z-index : 3;
+      overflow:hidden;
+
+      h2 {
+        font-size : 20px;
+        font-family: 'adobe-garamond-pro';
+        font-weight: bold;
+        text-align: center;
+        width : 100%;
+        display: block;
+        position : relative;
+        color : #000;
+      }
+
+      div.content {
+        display : block;
+        float : left;
+        font-size: 20px;
+        font-family: 'adobe-garamond-pro';
+        font-style: italic;
+        width : 100%;
+        text-align: center;
+        margin-top : 2.5vh;
+        color : #000;
+      }
+    }
+
+    div.area-photos {
+      position : absolute;
+      top : 100vh;
+
+      div.photo-item {
+        position : relative;
+        display : block;
+        float : left;
+        width : 100vw;
+        height : 100vh;
+
+        background-color : #000;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size : contain;
+
+        &:last-child {
+          //-bottom : 2px solid #fff;
+        }
+
+
+        div.bar {
+          top : 50%;
+          height : 1px;
+          width : 30vw;
+          left : 35vw;
+          background : rgba(0,0,0,0.3);
+          position : relative;
+
+          div.percentage{
+            display : block;
+            background : #000;
+            width : 30vw;
+            height : 1px;
+            transform-origin: 0px 0px;
+
+            transform : scaleX(0);
+          }
+        }
+
+        div.photo-real {
+          position : absolute;
+          top : 0px;
+          left : 0px;
+          width : 100vw;
+          height : 100vh;
+
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size : contain;
+          opacity : 0;
+        }
+      }
+    }
+  }
+}

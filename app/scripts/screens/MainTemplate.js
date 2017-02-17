@@ -35,11 +35,12 @@ var MainTemplate = React.createClass({
   render : function(){
     return (
       <div className="site-wrapper">
+        <div id="fake-scroller"></div>
         <BackgroundComponent onUpdateBackground={this.onUpdateBackground} location={this.state.location.pathname}/>
-        <MenuComponent ref="menu" location={this.state.location.pathname} />
         <div className="section-container">
           {React.cloneElement(this.props.children, {})}
         </div>
+        <MenuComponent ref="menu" location={this.state.location.pathname} />
       </div>
     )
   }
