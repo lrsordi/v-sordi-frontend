@@ -68,7 +68,7 @@
     "enus" : "scroll down"
   },
   "back": {
-    "ptbr" : "< voltar",
-    "enus" : "< back"
+    "ptbr" : "<&nbsp;&nbsp;voltar para home&nbsp;",
+    "enus" : "<&nbsp;&nbsp;back to home&nbsp;"
   }
 }

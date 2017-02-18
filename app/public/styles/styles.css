@@ -445,7 +445,7 @@ html, body {
   float: left;
   position: relative;
   width: 100%;
-  min-height: 500px; }
+  min-height: 100vh; }
   #app div.site-wrapper {
     position: relative;
     display: block;
@@ -547,6 +547,28 @@ div.main-menu {
         div.main-menu div.left-column h1 svg path {
           -webkit-transition: fill 0.5s linear;
           transition: fill 0.5s linear; }
+    div.main-menu div.left-column a.back {
+      font-family: 'adobe-garamond-pro';
+      color: #000;
+      font-size: 20px;
+      padding-top: 3.9vh;
+      padding-bottom: 3.9vh;
+      display: block;
+      padding-left: 3vh;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+      margin-top: 10vh;
+      margin-left: 1.2vh;
+      position: absolute;
+      float: left; }
+      div.main-menu div.left-column a.back span:not(:first-child) {
+        color: #fff;
+        position: absolute;
+        top: 3.9vh;
+        background: #000;
+        padding-left: 1vh;
+        margin-left: -1vh;
+        left: 3vh; }
     div.main-menu div.left-column nav.main-nav {
       display: block;
       float: left;

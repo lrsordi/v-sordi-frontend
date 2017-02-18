@@ -89,6 +89,8 @@ var MenuComponent = React.createClass({
 
     var navInternal = $(ReactDOM.findDOMNode(this.refs.internalmenu));
     TweenMax.staggerFromTo(navInternal.find("li"), 1, {x : 30, opacity : 0, delay:1}, {x : 0, opacity : 1, ease : Expo.easeInOut, onComplete:this.selectFirstLink},0.1);
+
+    TweenMax.fromTo($(ReactDOM.findDOMNode(this.refs.back)), 1, {y : 50, opacity :0}, {y : 0, opacity : 1, ease : Expo.easeInOut});
   },
 
   hideInternalMenu : function(){
@@ -117,6 +119,7 @@ var MenuComponent = React.createClass({
         SplitTextsHelper.initMainMenuHover($(this));
     });
 
+    SplitTextsHelper.initMainMenuHover($(ReactDOM.findDOMNode(this.refs.back)));
   },
 
   render : function(){
@@ -148,6 +151,7 @@ var MenuComponent = React.createClass({
               <li><Link to="/contato" className={this.state.location.indexOf("contato") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_contact")}>{ContentProvider.getTranslatedText("menu_contact")}</Link></li>
             </ul>
           </nav>
+          <Link to="/" ref="back" className="back" style={{visibility : (this.state.isInternalMenu ? "visible" : "hidden")}}>{ContentProvider.getTranslatedText("back")}</Link>
         </div>
 
         <nav ref="internalmenu" className="categories-nav" style={{visibility : (this.state.isInternalMenu ? "visible" : "hidden")}}>
