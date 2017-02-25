@@ -104,6 +104,42 @@ div.background-container {
 }
 
 
+div.links {
+  position : fixed;
+  bottom : 5vh;
+  left : 5vw;
+  width : 50vw;
+  opacity : 0;
+  transition : opacity 1s linear;
+
+  div.spacer {
+    display : inline-block;
+    float : left;
+    position : relative;
+    width : 1px;
+    height : 15px;
+    background : #000;
+    margin-left : 30px;
+    margin-right : 30px;
+  }
+
+  a {
+    font-family: 'adobe-garamond-pro';
+    font-style: italic;
+    color : #000;
+    font-size : 16px;
+    display : inline-block;
+    transition : color 0.5s linear;
+    position : relative;
+    float : left;
+    cursor : pointer;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
 .screen-changes-enter {
   opacity: 0.01;
   transition: opacity .5s ease-in;

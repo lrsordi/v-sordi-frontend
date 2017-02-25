@@ -10,6 +10,7 @@ var ContentProvider = require('./providers/ContentProvider');
 window.ContentProvider = ContentProvider;
 TweenMax.ticker.fps(60);
 
+var HAS_VIDEO = true;
 
 
 var Index = function(){

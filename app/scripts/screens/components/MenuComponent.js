@@ -132,6 +132,11 @@ var MenuComponent = React.createClass({
 
     return (
       <div className="main-menu">
+        <div className="languages" ref="languages" style={{opacity : (this.state.location.indexOf("portfolio") > -1 ? 0 : 1)}}>
+          <Link to={this.state.location + "?language=pt"} className={ContentProvider.language == "pt" ? "selected" : ""} onClick={window.location.reload}>pt</Link>
+          <div className="spacer">/</div>
+          <Link to={this.state.location + "?language=en"} className={ContentProvider.language == "en" ? "selected" : ""} onClick={window.location.reload}>en</Link>
+        </div>
         <div className="left-column" ref="leftcolumn">
           <Link to="/">
             <h1>
@@ -159,6 +164,8 @@ var MenuComponent = React.createClass({
             {categories}
           </ul>
         </nav>
+
+
       </div>
     )
   }

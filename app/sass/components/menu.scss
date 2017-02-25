@@ -3,6 +3,46 @@ div.main-menu {
   display : block;
   float : left;
 
+  div.languages {
+    font-family: 'adobe-garamond-pro';
+    color : #000;
+    font-size : 16px;
+    display : block;
+    padding-left : 3vh;
+    transition : color 0.5s linear;
+    position : fixed;
+    width : 40vw;
+    top : 93vh;
+    left : 90vw;
+
+    opacity : 0;
+    transition : opacity 1s linear;
+
+    a {
+      color : #000;
+      display : inline-block;
+      float : left;
+      position : relative;
+      cursor : pointer;
+
+      &:hover, &.selected{
+        text-decoration: underline;
+      }
+
+      &.selected {
+        pointer-events : none;
+      }
+    }
+
+    div.spacer {
+      display : inline-block;
+      float : left;
+      position : relative;
+      margin-left : 10px;
+      margin-right : 10px;
+      pointer-events : none;
+    }
+  }
 
   div.left-column {
     position : fixed;

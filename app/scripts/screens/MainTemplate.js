@@ -20,10 +20,15 @@ var MainTemplate = React.createClass({
     };
   },
 
+  componentDidMount : function(){
+  //  TweenMax.fromTo(ReactDOM.findDOMNode(this.refs.links), 1, {y : 30, opacity : 0}, {y : 0, opacity : 1 , ease : Expo.easeInOut});
+  },
+
   componentWillReceiveProps : function(nextProps){
     this.setState({
       location : nextProps.location
     });
+
   },
 
   onUpdateBackground : function(color){
@@ -41,6 +46,12 @@ var MainTemplate = React.createClass({
           {React.cloneElement(this.props.children, {})}
         </div>
         <MenuComponent ref="menu" location={this.state.location.pathname} />
+
+        <div className="links" ref="links" style={{opacity : (this.state.location.pathname.indexOf("portfolio") > -1 ? 0 : 1)}}>
+          <Link to={ContentProvider.generalContacts.facebook_url} target="_blank">facebook</Link>
+          <div className="spacer"/>
+          <Link to={ContentProvider.generalContacts.instagram_url} target="_blank">instagram</Link>
+        </div>
       </div>
     )
   }
