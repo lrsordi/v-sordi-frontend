@@ -10,6 +10,7 @@ html,body {
   background: #ffffff;
   overflow-x : hidden;
   overflow-y : scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #app {
@@ -183,7 +184,43 @@ div.links {
   opacity: 0;
 }
 
+@media screen and (max-width : 1000px){
 
+  #preloader {
+
+    svg#logo-preloader {
+      height: 10vh;
+      width : 10vh * 3.93;
+      left : 2vw;
+    }
+  }
+
+
+
+  div.links {
+    bottom : 5vh;
+    left : 3vw;
+    width : 30vw;
+
+    div.spacer {
+      margin-left : 3vw;
+      margin-right : 3vw;
+    }
+
+    a {
+      font-size : 2.5vw;
+      display : inline-block;
+      transition : color 0.5s linear;
+      position : relative;
+      float : left;
+      cursor : pointer;
+
+      &:hover, &:active{
+        text-decoration: underline;
+      }
+    }
+  }
+}
 
 @import "components/menu.scss";
 @import "sections/about.scss";

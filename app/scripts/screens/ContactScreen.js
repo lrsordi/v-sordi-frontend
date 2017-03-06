@@ -173,6 +173,7 @@ var ContactScreen = React.createClass({
 							)}
 						</div>
 					</div>
+					<div className="over-deg"></div>
 				</section>
 			)
 		}

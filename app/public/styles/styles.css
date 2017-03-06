@@ -12,6 +12,9 @@ html {
   -webkit-text-size-adjust: 100%;
   /* 2 */ }
 
+* {
+  -webkit-tap-highlight-color: transparent; }
+
 /**
  * Remove default margin.
  */
@@ -438,7 +441,8 @@ html, body {
   width: 100%;
   background: #ffffff;
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 #app {
   display: block;
@@ -578,6 +582,29 @@ div.links {
 
 .screen-changes-leave.screen-changes-leave-active {
   opacity: 0; }
+
+@media screen and (max-width: 1000px) {
+  #preloader svg#logo-preloader {
+    height: 10vh;
+    width: 39.3vh;
+    left: 2vw; }
+  div.links {
+    bottom: 5vh;
+    left: 3vw;
+    width: 30vw; }
+    div.links div.spacer {
+      margin-left: 3vw;
+      margin-right: 3vw; }
+    div.links a {
+      font-size: 2.5vw;
+      display: inline-block;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+      position: relative;
+      float: left;
+      cursor: pointer; }
+      div.links a:hover, div.links a:active {
+        text-decoration: underline; } }
 
 div.main-menu {
   position: absolute;
@@ -733,9 +760,54 @@ div.main-menu {
             margin-left: -1vh;
             left: 0px; }
 
+@media screen and (max-width: 1000px) {
+  div.main-menu div.languages {
+    font-size: 2.5vw;
+    padding-left: 0vh;
+    -webkit-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+    position: fixed;
+    width: auto;
+    top: auto;
+    left: auto;
+    right: 5vw;
+    bottom: 5vh; }
+  div.main-menu div.left-column {
+    top: 46vh;
+    left: 2vw; }
+    div.main-menu div.left-column h1 svg {
+      height: 10vh;
+      width: 39.3vh; }
+      div.main-menu div.left-column h1 svg path {
+        -webkit-transition: fill 0.5s linear;
+        transition: fill 0.5s linear; }
+    div.main-menu div.left-column a.back {
+      font-size: 2.5vw;
+      padding-left: 0vw; }
+    div.main-menu div.left-column nav.main-nav ul li a {
+      font-family: 'adobe-garamond-pro';
+      color: #000;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+      font-size: 2.5vw;
+      padding-top: 1vh;
+      margin-top: 4vh;
+      padding-bottom: 1vh;
+      padding-left: 3vh;
+      margin-bottom: 4vh; }
+      div.main-menu div.left-column nav.main-nav ul li a:hover, div.main-menu div.left-column nav.main-nav ul li a:active {
+        background: #000;
+        color: #fff; }
+    div.main-menu div.left-column nav.main-nav ul li span:not(:first-child) {
+      display: none; }
+  div.main-menu nav.categories-nav {
+    display: none; } }
+
 section#about {
   position: absolute;
   top: 0px; }
+  section#about div.over-deg {
+    display: none; }
   section#about div.column-content {
     display: block;
     position: absolute;
@@ -773,9 +845,40 @@ section#about {
       font-family: 'adobe-garamond-pro';
       line-height: 25px; }
 
+@media screen and (max-width: 1000px) {
+  section#about div.column-content {
+    top: 18vh;
+    width: 68vw;
+    padding-bottom: 20vh; }
+    section#about div.column-content h2 {
+      font-size: 3vw; }
+    section#about div.column-content div.spacer {
+      margin-top: 2.5vh;
+      margin-bottom: 2.5vh; }
+    section#about div.column-content div.content {
+      font-size: 2.5vw;
+      line-height: 3.5vw; }
+  section#about div.over-deg {
+    width: 100%;
+    height: 20vh;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 70%, white 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 70%, white 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+    /* IE6-9 */
+    display: block;
+    position: fixed;
+    bottom: 0;
+    pointer-events: none; } }
+
 section#contact {
   position: absolute;
   top: 0px; }
+  section#contact div.over-deg {
+    display: none; }
   section#contact div.column-content {
     display: block;
     position: absolute;
@@ -893,6 +996,7 @@ section#contact {
         color: #000;
         border-bottom: 1px solid #000;
         padding-bottom: 5px;
+        border-radius: 0px;
         margin-top: 1vh; }
         section#contact div.column-content div.content-form input::-webkit-input-placeholder, section#contact div.column-content div.content-form textarea::-webkit-input-placeholder {
           /* WebKit, Blink, Edge */
@@ -913,6 +1017,83 @@ section#contact {
       section#contact div.column-content div.content-form textarea {
         height: 10vh;
         resize: none; }
+
+@media screen and (max-width: 1000px) {
+  section#contact div.over-deg {
+    display: none; }
+  section#contact div.column-content {
+    top: 18vh;
+    width: 68vw;
+    padding-bottom: 20vh; }
+    section#contact div.column-content h2 {
+      font-size: 3vw; }
+    section#contact div.column-content div.spacer {
+      margin-top: 2.5vh;
+      margin-bottom: 10vh; }
+    section#contact div.column-content div.content {
+      margin-top: 1vh; }
+      section#contact div.column-content div.content span {
+        font-size: 2.5vw; }
+        section#contact div.column-content div.content span.value {
+          float: left;
+          position: relative;
+          clear: both;
+          margin-top: 1vw; }
+        section#contact div.column-content div.content span.newline {
+          margin-top: 5vh; }
+        section#contact div.column-content div.content span a:hover, section#contact div.column-content div.content span a:active {
+          background: #ffffff;
+          color: #000000; }
+        section#contact div.column-content div.content span a span:not(:first-child) {
+          display: none; }
+    section#contact div.column-content div.content-form {
+      display: none; }
+      section#contact div.column-content div.content-form.sending input, section#contact div.column-content div.content-form.sending textarea, section#contact div.column-content div.content-form.sending button {
+        pointer-events: none !important;
+        opacity: 0.6; }
+      section#contact div.column-content div.content-form span.fill-in {
+        font-size: 2.5vw; }
+      section#contact div.column-content div.content-form button, section#contact div.column-content div.content-form span.sending {
+        font-size: 2.5vw;
+        padding: 1.5vw; }
+        section#contact div.column-content div.content-form button span:not(:first-child), section#contact div.column-content div.content-form span.sending span:not(:first-child) {
+          display: none; }
+      section#contact div.column-content div.content-form input, section#contact div.column-content div.content-form textarea {
+        clear: both;
+        float: left;
+        position: relative;
+        font-family: adobe-garamond-pro;
+        font-style: italic;
+        font-size: 2.5vw;
+        width: 60vw;
+        padding: 10px;
+        background: none;
+        border: none;
+        outline: none;
+        color: #000;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        border-radius: 0px;
+        margin-top: 1vh; }
+        section#contact div.column-content div.content-form input::-webkit-input-placeholder, section#contact div.column-content div.content-form textarea::-webkit-input-placeholder {
+          /* WebKit, Blink, Edge */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-moz-placeholder, section#contact div.column-content div.content-form textarea:-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input::-moz-placeholder, section#contact div.column-content div.content-form textarea::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-ms-input-placeholder, section#contact div.column-content div.content-form textarea:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+      section#contact div.column-content div.content-form textarea {
+        height: 10vh;
+        resize: none; } }
 
 section#portfolio {
   position: fixed;

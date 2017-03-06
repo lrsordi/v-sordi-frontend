@@ -59,6 +59,7 @@ var AboutMeScreen = React.createClass({
 						<div className="spacer" ref="spacer"></div>
 						<div className="content" ref="content" dangerouslySetInnerHTML={content}></div>
 					</div>
+					<div className="over-deg"></div>
 				</section>
 			)
 		}

@@ -192,3 +192,78 @@ div.main-menu {
     }
   }
 }
+
+
+@media screen and (max-width:1000px) {
+  div.main-menu {
+
+    div.languages {
+      font-size : 2.5vw;
+      padding-left : 0vh;
+      transition : color 0.5s linear;
+      position : fixed;
+      width : auto;
+      top : auto;
+      left : auto;
+      right : 5vw;
+      bottom : 5vh;
+    }
+
+    div.left-column {
+      top : 46vh;
+      left : 2vw;
+
+      h1 {
+
+        svg {
+          height: 10vh;
+          width : 10vh * 3.93;
+
+          path {
+            transition: fill 0.5s linear;
+          }
+        }
+      }
+
+      a.back {
+        font-size : 2.5vw;
+        padding-left : 0vw;
+      }
+
+      nav.main-nav {
+
+        ul {
+          li {
+
+            a {
+              font-family: 'adobe-garamond-pro';
+              color : #000;
+              transition : color 0.5s linear;
+              font-size : 2.5vw;
+              padding-top : 1vh;
+              margin-top : 4vh;
+              padding-bottom : 1vh;
+              padding-left : 3vh;
+              margin-bottom : 4vh;
+
+              &:hover, &:active{
+                background : #000;
+                color : #fff;
+              }
+            }
+
+            span:not(:first-child){
+              display: none;
+            }
+
+          }
+        }
+      }
+    }
+
+
+    nav.categories-nav {
+      display : none;
+    }
+  }
+}
