@@ -70,5 +70,9 @@
   "back": {
     "ptbr" : "<&nbsp;&nbsp;voltar para home&nbsp;",
     "enus" : "<&nbsp;&nbsp;back to home&nbsp;"
+  },
+  "rotate": {
+    "ptbr" : "Por favor, gire seu celular para uma melhor experiência.",
+    "enus" : "Please, rotate your device for a better experience."
   }
 }

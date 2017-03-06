@@ -184,6 +184,43 @@ div.links {
   opacity: 0;
 }
 
+
+div#rotate-layer {
+  position : absolute;
+  top : 0px;
+  z-index : 9999;
+  top : 0px;
+  left : 0px;
+  display : block;
+  width : 100vw;
+  height : 100vh;
+  background: #fff;
+  display : none;
+
+  svg {
+    transform : scaleX(-1) translateX(50%);
+    width : 50vw;
+    left : 50%;
+    position : relative;
+    display : block;
+    float : left;
+    margin-top : 30vh;
+  }
+
+  p {
+    font-size : 6vw;
+    font-family: 'adobe-garamond-pro';
+    position : relative;
+    width : 60vw;
+    left : 20vw;
+    clear : both;
+    float : left;
+    display : block;
+    text-align: center;
+    margin-top : 10vh;
+  }
+}
+
 @media screen and (max-width : 1000px){
   html,body {
     overflow : hidden;
@@ -222,6 +259,12 @@ div.links {
         text-decoration: underline;
       }
     }
+  }
+}
+
+@media screen and (max-width : 1000px) and (orientation : portrait){
+  div#rotate-layer {
+    display : block;
   }
 }
 
