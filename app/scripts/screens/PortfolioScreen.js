@@ -39,7 +39,7 @@ var PortfolioScreen = React.createClass({
 		},
 
 		componentDidMount : function(){
-
+			$("#app").addClass("white");
 			this.totalScrollAreas = 0;
 			this.containerMax = $(ReactDOM.findDOMNode(this.refs.containermax));
 			var self = this;
@@ -135,6 +135,8 @@ var PortfolioScreen = React.createClass({
 			var dH;
 			var coefSlug = 0;
 
+			var hasCover = false;
+
 			for(var i = 0; i < this.albums.length; i++){
 				album = this.albums[i];
 				albumContainer = $(ReactDOM.findDOMNode(this.refs["album"+i.toString()]));
@@ -155,6 +157,10 @@ var PortfolioScreen = React.createClass({
 				coef = Math.max(0,coef);
 				coef = Math.min(1,coef);
 
+				if(coef > 0 && coef < 1){
+					hasCover = true;
+				}
+
 				var coefScl = coef * 2;
 				coecoefSclf = Math.max(0,coefScl);
 				coefScl = Math.min(1,coefScl);
@@ -163,6 +169,12 @@ var PortfolioScreen = React.createClass({
 				TweenMax.to(albumContainer.find("div.area-cover"), 1, {y : coef * wh*0.8, roundProps:"y", force3D : true, ease : Quint.easeOut});
 				TweenMax.to(albumContainer.find("div.area-details div.scroll-down"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), scale : 1-coefScl, y : coefScl * 20, ease : Quint.easeOut});
 				//TweenMax.to(albumContainer.find("div.area-details"), 1, {y : coef * -(dH - (wh * 0.04)), roundProps:"y", force3D : true, ease : Quint.easeOut});
+			}
+
+			if(hasCover || stop == 0){
+				$("#app").addClass("white");
+			}else{
+				$("#app").removeClass("white");
 			}
 		},
 

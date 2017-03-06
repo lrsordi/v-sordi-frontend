@@ -455,6 +455,23 @@ html, body {
     #app div.site-wrapper div.section-container {
       position: absolute;
       top: 0px; }
+  #app.white span {
+    color: #ffffff !important; }
+  #app.white span + span {
+    color: #000000 !important;
+    background: #ffffff !important; }
+  #app.white li.spacer {
+    background: #ffffff !important; }
+  #app.white div.links div.spacer {
+    background: #ffffff !important; }
+  #app.white div.languages div.spacer {
+    color: #ffffff !important; }
+  #app.white div.scroll-down {
+    color: #ffffff !important; }
+  #app.white a {
+    color: #ffffff !important; }
+  #app.white svg path {
+    fill: #ffffff !important; }
 
 #preloader {
   position: fixed;
@@ -470,7 +487,9 @@ html, body {
     top: 46vh;
     left: 5vw; }
     #preloader svg#logo-preloader path {
-      fill: #000000 !important; }
+      fill: #000000 !important;
+      -webkit-transition: fill 0.3s linear;
+      transition: fill 0.3s linear; }
   #preloader div.bar {
     position: absolute;
     top: 0px;
@@ -511,7 +530,7 @@ div.background-container {
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.58); }
+    background: rgba(255, 255, 255, 0.78); }
 
 div.links {
   position: fixed;
@@ -584,7 +603,9 @@ div.main-menu {
       display: inline-block;
       float: left;
       position: relative;
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear; }
       div.main-menu div.languages a:hover, div.main-menu div.languages a.selected {
         text-decoration: underline; }
       div.main-menu div.languages a.selected {
@@ -595,7 +616,9 @@ div.main-menu {
       position: relative;
       margin-left: 10px;
       margin-right: 10px;
-      pointer-events: none; }
+      pointer-events: none;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear; }
   div.main-menu div.left-column {
     position: fixed;
     top: 46vh;
@@ -613,12 +636,13 @@ div.main-menu {
     div.main-menu div.left-column a.back {
       font-family: 'adobe-garamond-pro';
       color: #000;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
       font-size: 20px;
       padding-top: 3.9vh;
       padding-bottom: 3.9vh;
       display: block;
       padding-left: 3vh;
-      -webkit-transition: color 0.5s linear;
       transition: color 0.5s linear;
       margin-top: 10vh;
       margin-left: 1.2vh;
@@ -626,6 +650,8 @@ div.main-menu {
       float: left; }
       div.main-menu div.left-column a.back span:not(:first-child) {
         color: #fff;
+        -webkit-transition: color 0.5s linear;
+        transition: color 0.5s linear;
         position: absolute;
         top: 3.9vh;
         background: #000;
@@ -646,17 +672,20 @@ div.main-menu {
           div.main-menu div.left-column nav.main-nav ul li a {
             font-family: 'adobe-garamond-pro';
             color: #000;
+            -webkit-transition: color 0.5s linear;
+            transition: color 0.5s linear;
             font-size: 20px;
             padding-top: 3.9vh;
             padding-bottom: 3.9vh;
             display: block;
             padding-left: 3vh;
-            -webkit-transition: color 0.5s linear;
             transition: color 0.5s linear; }
             div.main-menu div.left-column nav.main-nav ul li a.selected {
               pointer-events: none; }
             div.main-menu div.left-column nav.main-nav ul li a span:not(:first-child) {
               color: #fff;
+              -webkit-transition: color 0.5s linear;
+              transition: color 0.5s linear;
               position: absolute;
               top: 3.9vh;
               background: #000;
@@ -690,12 +719,16 @@ div.main-menu {
           float: left;
           position: relative;
           width: 100%;
-          color: #000; }
+          color: #000;
+          -webkit-transition: color 0.5s linear;
+          transition: color 0.5s linear; }
           div.main-menu nav.categories-nav ul li a.selected {
             pointer-events: none; }
           div.main-menu nav.categories-nav ul li a span:not(:first-child) {
             color: #fff;
             position: absolute;
+            -webkit-transition: color 0.5s linear;
+            transition: color 0.5s linear;
             background: #000;
             margin-left: -1vh;
             left: 0px; }

@@ -32,6 +32,31 @@ html,body {
       top : 0px;
     }
   }
+
+  &.white{
+    span {
+      color : #ffffff !important;
+    }
+
+    span+span {
+      color : #000000 !important;
+      background : #ffffff !important;
+    }
+    li.spacer {
+      background : #ffffff !important;
+    }
+    div.links div.spacer {background : #ffffff !important;}
+    div.languages div.spacer {color : #ffffff !important;}
+    div.scroll-down { color : #ffffff !important;}
+    a {
+      color : #ffffff !important;
+    }
+    svg {
+      path {
+        fill : #ffffff !important;
+      }
+    }
+  }
 }
 
 #preloader {
@@ -48,7 +73,7 @@ html,body {
     width : 8vh * 3.93;
     top : 46vh;
     left : 5vw;
-    path{fill : #000000 !important;}
+    path{fill : #000000 !important; transition : fill 0.3s linear;}
   }
 
   div.bar {
@@ -99,7 +124,7 @@ div.background-container {
     width : 100vw;
     height : 100vh;
 
-    background : rgba(255,255,255,0.58);
+    background : rgba(255,255,255,0.78);
   }
 }
 

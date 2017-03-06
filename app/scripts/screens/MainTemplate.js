@@ -33,8 +33,6 @@ var MainTemplate = React.createClass({
 
   onUpdateBackground : function(color){
 
-    if(this.refs.menu)
-      this.refs.menu.setColor(color);
   },
 
   render : function(){

@@ -20,7 +20,7 @@ var ContentProvider = {
       album.category = category;
 
       if(!album.shownInHome) continue;
-      this.homeCovers.push({file : window.api_url + album.cover.path.replace("public/","") + album.cover.filename, color : album.color});
+      this.homeCovers.push({file : window.api_url + album.cover.path.replace("public/","") + album.cover.filename, isCoverInvertedColor : album.isCoverInvertedColor, color : album.color});
     }
   },
 

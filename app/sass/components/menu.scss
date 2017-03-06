@@ -25,6 +25,8 @@ div.main-menu {
       position : relative;
       cursor : pointer;
 
+      transition : color 0.5s linear;
+
       &:hover, &.selected{
         text-decoration: underline;
       }
@@ -41,6 +43,8 @@ div.main-menu {
       margin-left : 10px;
       margin-right : 10px;
       pointer-events : none;
+
+      transition : color 0.5s linear;
     }
   }
 
@@ -67,6 +71,7 @@ div.main-menu {
     a.back {
       font-family: 'adobe-garamond-pro';
       color : #000;
+      transition : color 0.5s linear;
       font-size : 20px;
       padding-top : 3.9vh;
       padding-bottom : 3.9vh;
@@ -80,6 +85,7 @@ div.main-menu {
 
       span:not(:first-child){
         color : #fff;
+        transition : color 0.5s linear;
         position : absolute;
         top : 3.9vh;
         background : #000;
@@ -105,6 +111,7 @@ div.main-menu {
           a {
             font-family: 'adobe-garamond-pro';
             color : #000;
+            transition : color 0.5s linear;
             font-size : 20px;
             padding-top : 3.9vh;
             padding-bottom : 3.9vh;
@@ -119,6 +126,7 @@ div.main-menu {
 
             span:not(:first-child){
               color : #fff;
+              transition : color 0.5s linear;
               position : absolute;
               top : 3.9vh;
               background : #000;
@@ -165,6 +173,7 @@ div.main-menu {
           position : relative;
           width : 100%;
           color : #000;
+          transition : color 0.5s linear;
 
           &.selected {
             pointer-events : none;
@@ -173,7 +182,7 @@ div.main-menu {
           span:not(:first-child){
             color : #fff;
             position : absolute;
-
+            transition : color 0.5s linear;
             background : #000;
             margin-left : -1vh;
             left : 0px;
