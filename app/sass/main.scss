@@ -10,7 +10,7 @@ html,body {
   background: #ffffff;
   overflow-x : hidden;
   overflow-y : scroll;
-  -webkit-overflow-scrolling: touch;
+
 }
 
 #app {
@@ -185,6 +185,9 @@ div.links {
 }
 
 @media screen and (max-width : 1000px){
+  html,body {
+    overflow : hidden;
+  }
 
   #preloader {
 

@@ -133,6 +133,11 @@ gulp.task('serve', ['server','watch']);
     .pipe(gulp.dest('./dist/public/images/'));
 });
 
+gulp.task('copy-data',function(){
+ return gulp.src("app/public/data/**")
+   .pipe(gulp.dest('./dist/public/data/'));
+});
+
 
 gulp.task('prepare-build',['clean','uglify','minify'], function(){
   return gulp.src("app/public/fonts/**")
@@ -142,7 +147,7 @@ gulp.task('prepare-build',['clean','uglify','minify'], function(){
 
 
 
-gulp.task('build', ['prepare-build', 'copy-images'], function(){
+gulp.task('build', ['prepare-build', 'copy-images', 'copy-data'], function(){
 
   var num = new Date().getTime();
   gulp.src('./dist/public/scripts/scripts.min.js')

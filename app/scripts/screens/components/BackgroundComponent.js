@@ -82,6 +82,8 @@ var BackgroundComponent = React.createClass({
   // },
   checkInvertColors : function(){
     var inverted = ContentProvider.homeCovers[this.$currentElement].isCoverInvertedColor;
+    if(this.props.location.indexOf("portfolio") > -1) return;
+    
     if(this.canInvertColors){
       if(inverted){
         $("#app").addClass("white");
@@ -91,6 +93,11 @@ var BackgroundComponent = React.createClass({
     }else{
       $("#app").removeClass("white");
     }
+
+    // console.log("CHECK INVERT" + " " + this.props.location.indexOf("portfolio"));
+    // if(this.props.location.indexOf("portfolio") > -1){
+    //   $("#app").addClass("white");
+    // }
   },
   showNextBackground : function(force){
 

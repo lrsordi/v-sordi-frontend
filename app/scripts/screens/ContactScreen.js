@@ -47,6 +47,9 @@ var ContactScreen = React.createClass({
 			contentForm.find("input,textarea,button").each(function(el,index){
 				TweenMax.fromTo($(this), 1, {x : -20, opacity : 0}, {x : 0, opacity : 1, ease : Expo.easeInOut, delay:0.9+(el*0.05)});
 			});
+
+			$(window).scrollTop(10);
+			$(window).scrollTop(0);
 		},
 
 

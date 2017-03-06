@@ -55,7 +55,10 @@ section#about{
 
 @media screen and (max-width : 1000px){
   section#about{
-
+    overflow-y : scroll;
+    width : 100vw;
+    height : 100vh;
+    -webkit-overflow-scrolling: touch;
 
     div.column-content{
       top : 18vh;
