@@ -10,6 +10,7 @@ html,body {
   background: #ffffff;
   overflow-x : hidden;
   overflow-y : scroll;
+
 }
 
 #app {
@@ -32,6 +33,31 @@ html,body {
       top : 0px;
     }
   }
+
+  &.white{
+    span {
+      color : #ffffff !important;
+    }
+
+    span+span {
+      color : #000000 !important;
+      background : #ffffff !important;
+    }
+    li.spacer {
+      background : #ffffff !important;
+    }
+    div.links div.spacer {background : #ffffff !important;}
+    div.languages div.spacer {color : #ffffff !important;}
+    div.scroll-down { color : #ffffff !important;}
+    a {
+      color : #ffffff !important;
+    }
+    svg {
+      path {
+        fill : #ffffff !important;
+      }
+    }
+  }
 }
 
 #preloader {
@@ -48,7 +74,7 @@ html,body {
     width : 8vh * 3.93;
     top : 46vh;
     left : 5vw;
-    path{fill : #000000 !important;}
+    path{fill : #000000 !important; transition : fill 0.3s linear;}
   }
 
   div.bar {
@@ -99,7 +125,7 @@ div.background-container {
     width : 100vw;
     height : 100vh;
 
-    background : rgba(255,255,255,0.58);
+    background : rgba(255,255,255,0.78);
   }
 }
 
@@ -159,6 +185,88 @@ div.links {
 }
 
 
+div#rotate-layer {
+  position : absolute;
+  top : 0px;
+  z-index : 9999;
+  top : 0px;
+  left : 0px;
+  display : block;
+  width : 100vw;
+  height : 100vh;
+  background: #fff;
+  display : none;
+
+  svg {
+    transform : scaleX(-1) translateX(50%);
+    width : 50vw;
+    left : 50%;
+    position : relative;
+    display : block;
+    float : left;
+    margin-top : 30vh;
+  }
+
+  p {
+    font-size : 6vw;
+    font-family: 'adobe-garamond-pro';
+    position : relative;
+    width : 60vw;
+    left : 20vw;
+    clear : both;
+    float : left;
+    display : block;
+    text-align: center;
+    margin-top : 10vh;
+  }
+}
+
+@media screen and (max-width : 1000px){
+  html,body {
+    overflow : hidden;
+  }
+
+  #preloader {
+
+    svg#logo-preloader {
+      height: 10vh;
+      width : 10vh * 3.93;
+      left : 2vw;
+    }
+  }
+
+
+
+  div.links {
+    bottom : 5vh;
+    left : 3vw;
+    width : 30vw;
+
+    div.spacer {
+      margin-left : 3vw;
+      margin-right : 3vw;
+    }
+
+    a {
+      font-size : 2.5vw;
+      display : inline-block;
+      transition : color 0.5s linear;
+      position : relative;
+      float : left;
+      cursor : pointer;
+
+      &:hover, &:active{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (max-width : 1000px) and (orientation : portrait){
+  div#rotate-layer {
+    display : block;
+  }
+}
 
 @import "components/menu.scss";
 @import "sections/about.scss";

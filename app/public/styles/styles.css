@@ -12,6 +12,9 @@ html {
   -webkit-text-size-adjust: 100%;
   /* 2 */ }
 
+* {
+  -webkit-tap-highlight-color: transparent; }
+
 /**
  * Remove default margin.
  */
@@ -455,6 +458,23 @@ html, body {
     #app div.site-wrapper div.section-container {
       position: absolute;
       top: 0px; }
+  #app.white span {
+    color: #ffffff !important; }
+  #app.white span + span {
+    color: #000000 !important;
+    background: #ffffff !important; }
+  #app.white li.spacer {
+    background: #ffffff !important; }
+  #app.white div.links div.spacer {
+    background: #ffffff !important; }
+  #app.white div.languages div.spacer {
+    color: #ffffff !important; }
+  #app.white div.scroll-down {
+    color: #ffffff !important; }
+  #app.white a {
+    color: #ffffff !important; }
+  #app.white svg path {
+    fill: #ffffff !important; }
 
 #preloader {
   position: fixed;
@@ -470,7 +490,9 @@ html, body {
     top: 46vh;
     left: 5vw; }
     #preloader svg#logo-preloader path {
-      fill: #000000 !important; }
+      fill: #000000 !important;
+      -webkit-transition: fill 0.3s linear;
+      transition: fill 0.3s linear; }
   #preloader div.bar {
     position: absolute;
     top: 0px;
@@ -511,7 +533,7 @@ div.background-container {
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.58); }
+    background: rgba(255, 255, 255, 0.78); }
 
 div.links {
   position: fixed;
@@ -560,6 +582,67 @@ div.links {
 .screen-changes-leave.screen-changes-leave-active {
   opacity: 0; }
 
+div#rotate-layer {
+  position: absolute;
+  top: 0px;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  display: none; }
+  div#rotate-layer svg {
+    -webkit-transform: scaleX(-1) translateX(50%);
+            transform: scaleX(-1) translateX(50%);
+    width: 50vw;
+    left: 50%;
+    position: relative;
+    display: block;
+    float: left;
+    margin-top: 30vh; }
+  div#rotate-layer p {
+    font-size: 6vw;
+    font-family: 'adobe-garamond-pro';
+    position: relative;
+    width: 60vw;
+    left: 20vw;
+    clear: both;
+    float: left;
+    display: block;
+    text-align: center;
+    margin-top: 10vh; }
+
+@media screen and (max-width: 1000px) {
+  html, body {
+    overflow: hidden; }
+  #preloader svg#logo-preloader {
+    height: 10vh;
+    width: 39.3vh;
+    left: 2vw; }
+  div.links {
+    bottom: 5vh;
+    left: 3vw;
+    width: 30vw; }
+    div.links div.spacer {
+      margin-left: 3vw;
+      margin-right: 3vw; }
+    div.links a {
+      font-size: 2.5vw;
+      display: inline-block;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+      position: relative;
+      float: left;
+      cursor: pointer; }
+      div.links a:hover, div.links a:active {
+        text-decoration: underline; } }
+
+@media screen and (max-width: 1000px) and (orientation: portrait) {
+  div#rotate-layer {
+    display: block; } }
+
 div.main-menu {
   position: absolute;
   display: block;
@@ -584,7 +667,9 @@ div.main-menu {
       display: inline-block;
       float: left;
       position: relative;
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear; }
       div.main-menu div.languages a:hover, div.main-menu div.languages a.selected {
         text-decoration: underline; }
       div.main-menu div.languages a.selected {
@@ -595,7 +680,9 @@ div.main-menu {
       position: relative;
       margin-left: 10px;
       margin-right: 10px;
-      pointer-events: none; }
+      pointer-events: none;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear; }
   div.main-menu div.left-column {
     position: fixed;
     top: 46vh;
@@ -613,12 +700,13 @@ div.main-menu {
     div.main-menu div.left-column a.back {
       font-family: 'adobe-garamond-pro';
       color: #000;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
       font-size: 20px;
       padding-top: 3.9vh;
       padding-bottom: 3.9vh;
       display: block;
       padding-left: 3vh;
-      -webkit-transition: color 0.5s linear;
       transition: color 0.5s linear;
       margin-top: 10vh;
       margin-left: 1.2vh;
@@ -626,6 +714,8 @@ div.main-menu {
       float: left; }
       div.main-menu div.left-column a.back span:not(:first-child) {
         color: #fff;
+        -webkit-transition: color 0.5s linear;
+        transition: color 0.5s linear;
         position: absolute;
         top: 3.9vh;
         background: #000;
@@ -646,17 +736,20 @@ div.main-menu {
           div.main-menu div.left-column nav.main-nav ul li a {
             font-family: 'adobe-garamond-pro';
             color: #000;
+            -webkit-transition: color 0.5s linear;
+            transition: color 0.5s linear;
             font-size: 20px;
             padding-top: 3.9vh;
             padding-bottom: 3.9vh;
             display: block;
             padding-left: 3vh;
-            -webkit-transition: color 0.5s linear;
             transition: color 0.5s linear; }
             div.main-menu div.left-column nav.main-nav ul li a.selected {
               pointer-events: none; }
             div.main-menu div.left-column nav.main-nav ul li a span:not(:first-child) {
               color: #fff;
+              -webkit-transition: color 0.5s linear;
+              transition: color 0.5s linear;
               position: absolute;
               top: 3.9vh;
               background: #000;
@@ -690,19 +783,68 @@ div.main-menu {
           float: left;
           position: relative;
           width: 100%;
-          color: #000; }
+          color: #000;
+          -webkit-transition: color 0.5s linear;
+          transition: color 0.5s linear; }
           div.main-menu nav.categories-nav ul li a.selected {
             pointer-events: none; }
           div.main-menu nav.categories-nav ul li a span:not(:first-child) {
             color: #fff;
             position: absolute;
+            -webkit-transition: color 0.5s linear;
+            transition: color 0.5s linear;
             background: #000;
             margin-left: -1vh;
             left: 0px; }
 
+@media screen and (max-width: 1000px) {
+  div.main-menu div.languages {
+    font-size: 2.5vw;
+    padding-left: 0vh;
+    -webkit-transition: color 0.5s linear;
+    transition: color 0.5s linear;
+    position: fixed;
+    width: auto;
+    top: auto;
+    left: auto;
+    right: 5vw;
+    bottom: 5vh; }
+  div.main-menu div.left-column {
+    top: 46vh;
+    left: 2vw; }
+    div.main-menu div.left-column h1 svg {
+      height: 10vh;
+      width: 39.3vh; }
+      div.main-menu div.left-column h1 svg path {
+        -webkit-transition: fill 0.5s linear;
+        transition: fill 0.5s linear; }
+    div.main-menu div.left-column a.back {
+      font-size: 2.5vw;
+      padding-left: 0vw; }
+    div.main-menu div.left-column nav.main-nav ul li a {
+      font-family: 'adobe-garamond-pro';
+      color: #000;
+      -webkit-transition: color 0.5s linear;
+      transition: color 0.5s linear;
+      font-size: 2.5vw;
+      padding-top: 1vh;
+      margin-top: 4vh;
+      padding-bottom: 1vh;
+      padding-left: 3vh;
+      margin-bottom: 4vh; }
+      div.main-menu div.left-column nav.main-nav ul li a:hover, div.main-menu div.left-column nav.main-nav ul li a:active {
+        background: #000;
+        color: #fff; }
+    div.main-menu div.left-column nav.main-nav ul li span:not(:first-child) {
+      display: none; }
+  div.main-menu nav.categories-nav {
+    display: none; } }
+
 section#about {
   position: absolute;
   top: 0px; }
+  section#about div.over-deg {
+    display: none; }
   section#about div.column-content {
     display: block;
     position: absolute;
@@ -740,9 +882,45 @@ section#about {
       font-family: 'adobe-garamond-pro';
       line-height: 25px; }
 
+@media screen and (max-width: 1000px) {
+  section#about {
+    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch; }
+    section#about div.column-content {
+      top: 18vh;
+      width: 68vw;
+      padding-bottom: 20vh; }
+      section#about div.column-content h2 {
+        font-size: 3vw; }
+      section#about div.column-content div.spacer {
+        margin-top: 2.5vh;
+        margin-bottom: 2.5vh; }
+      section#about div.column-content div.content {
+        font-size: 2.5vw;
+        line-height: 3.5vw; }
+    section#about div.over-deg {
+      width: 100%;
+      height: 20vh;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 70%, white 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 70%, white 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+      /* IE6-9 */
+      display: block;
+      position: fixed;
+      bottom: 0;
+      pointer-events: none; } }
+
 section#contact {
   position: absolute;
   top: 0px; }
+  section#contact div.over-deg {
+    display: none; }
   section#contact div.column-content {
     display: block;
     position: absolute;
@@ -860,6 +1038,7 @@ section#contact {
         color: #000;
         border-bottom: 1px solid #000;
         padding-bottom: 5px;
+        border-radius: 0px;
         margin-top: 1vh; }
         section#contact div.column-content div.content-form input::-webkit-input-placeholder, section#contact div.column-content div.content-form textarea::-webkit-input-placeholder {
           /* WebKit, Blink, Edge */
@@ -880,6 +1059,83 @@ section#contact {
       section#contact div.column-content div.content-form textarea {
         height: 10vh;
         resize: none; }
+
+@media screen and (max-width: 1000px) {
+  section#contact div.over-deg {
+    display: none; }
+  section#contact div.column-content {
+    top: 18vh;
+    width: 68vw;
+    padding-bottom: 20vh; }
+    section#contact div.column-content h2 {
+      font-size: 3vw; }
+    section#contact div.column-content div.spacer {
+      margin-top: 2.5vh;
+      margin-bottom: 10vh; }
+    section#contact div.column-content div.content {
+      margin-top: 1vh; }
+      section#contact div.column-content div.content span {
+        font-size: 2.5vw; }
+        section#contact div.column-content div.content span.value {
+          float: left;
+          position: relative;
+          clear: both;
+          margin-top: 1vw; }
+        section#contact div.column-content div.content span.newline {
+          margin-top: 5vh; }
+        section#contact div.column-content div.content span a:hover, section#contact div.column-content div.content span a:active {
+          background: #ffffff;
+          color: #000000; }
+        section#contact div.column-content div.content span a span:not(:first-child) {
+          display: none; }
+    section#contact div.column-content div.content-form {
+      display: none; }
+      section#contact div.column-content div.content-form.sending input, section#contact div.column-content div.content-form.sending textarea, section#contact div.column-content div.content-form.sending button {
+        pointer-events: none !important;
+        opacity: 0.6; }
+      section#contact div.column-content div.content-form span.fill-in {
+        font-size: 2.5vw; }
+      section#contact div.column-content div.content-form button, section#contact div.column-content div.content-form span.sending {
+        font-size: 2.5vw;
+        padding: 1.5vw; }
+        section#contact div.column-content div.content-form button span:not(:first-child), section#contact div.column-content div.content-form span.sending span:not(:first-child) {
+          display: none; }
+      section#contact div.column-content div.content-form input, section#contact div.column-content div.content-form textarea {
+        clear: both;
+        float: left;
+        position: relative;
+        font-family: adobe-garamond-pro;
+        font-style: italic;
+        font-size: 2.5vw;
+        width: 60vw;
+        padding: 10px;
+        background: none;
+        border: none;
+        outline: none;
+        color: #000;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        border-radius: 0px;
+        margin-top: 1vh; }
+        section#contact div.column-content div.content-form input::-webkit-input-placeholder, section#contact div.column-content div.content-form textarea::-webkit-input-placeholder {
+          /* WebKit, Blink, Edge */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-moz-placeholder, section#contact div.column-content div.content-form textarea:-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input::-moz-placeholder, section#contact div.column-content div.content-form textarea::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+        section#contact div.column-content div.content-form input:-ms-input-placeholder, section#contact div.column-content div.content-form textarea:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: rgba(0, 0, 0, 0.7);
+          opacity: 1; }
+      section#contact div.column-content div.content-form textarea {
+        height: 10vh;
+        resize: none; } }
 
 section#portfolio {
   position: fixed;
@@ -994,3 +1250,91 @@ section#portfolio {
           background-position: center;
           background-size: contain;
           opacity: 0; }
+
+@media screen and (max-width: 1000px) {
+  section#portfolio {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; }
+    section#portfolio section.portfolio-area {
+      width: 100vw;
+      height: auto;
+      display: block;
+      position: relative;
+      float: left; }
+      section#portfolio section.portfolio-area div.area-cover {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        float: left;
+        position: relative; }
+      section#portfolio section.portfolio-area div.area-details {
+        width: 100vw;
+        left: 0vw;
+        padding: 6vh;
+        position: absolute;
+        top: 90vh;
+        z-index: 3;
+        display: block;
+        float: left; }
+        section#portfolio section.portfolio-area div.area-details div.scroll-down {
+          position: absolute;
+          font-family: 'adobe-garamond-pro';
+          font-size: 2.5vw;
+          color: #000;
+          text-align: center;
+          width: 50vh;
+          margin: 0 auto;
+          margin-top: -15vh;
+          left: 50%;
+          margin-left: -25vh; }
+          section#portfolio section.portfolio-area div.area-details div.scroll-down svg {
+            width: 1vw;
+            height: 1vw;
+            -webkit-transform: rotate(90deg) translate(0px, -1vw);
+                    transform: rotate(90deg) translate(0px, -1vw); }
+        section#portfolio section.portfolio-area div.area-details h2 {
+          font-size: 2.5vw; }
+        section#portfolio section.portfolio-area div.area-details div.content {
+          font-size: 2.5vh;
+          margin-top: 2.5vh; }
+      section#portfolio section.portfolio-area div.area-photos {
+        position: relative;
+        top: 0px;
+        display: block;
+        float: left; }
+        section#portfolio section.portfolio-area div.area-photos div.photo-item {
+          width: 100vw;
+          height: 100vh;
+          display: block;
+          float: left;
+          position: relative; }
+          section#portfolio section.portfolio-area div.area-photos div.photo-item div.bar {
+            top: 50%;
+            height: 1px;
+            width: 30vw;
+            left: 35vw;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative; }
+            section#portfolio section.portfolio-area div.area-photos div.photo-item div.bar div.percentage {
+              display: block;
+              background: #000;
+              width: 30vw;
+              height: 1px;
+              -webkit-transform-origin: 0px 0px;
+                      transform-origin: 0px 0px;
+              -webkit-transform: scaleX(0);
+                      transform: scaleX(0); }
+          section#portfolio section.portfolio-area div.area-photos div.photo-item div.photo-real {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0; } }

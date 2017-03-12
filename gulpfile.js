@@ -33,6 +33,7 @@ var sass = require('gulp-sass');
  * DEV ENVIRONMENT
  */
 gulp.task('browserify-client', function() {
+  process.env.NODE_ENV = "production";
   var b = browserify({
     entries : 'app/scripts/Index.js',
     options: {
@@ -132,6 +133,11 @@ gulp.task('serve', ['server','watch']);
     .pipe(gulp.dest('./dist/public/images/'));
 });
 
+gulp.task('copy-data',function(){
+ return gulp.src("app/public/data/**")
+   .pipe(gulp.dest('./dist/public/data/'));
+});
+
 
 gulp.task('prepare-build',['clean','uglify','minify'], function(){
   return gulp.src("app/public/fonts/**")
@@ -141,7 +147,8 @@ gulp.task('prepare-build',['clean','uglify','minify'], function(){
 
 
 
-gulp.task('build', ['prepare-build', 'copy-images'], function(){
+gulp.task('build', ['prepare-build', 'copy-images', 'copy-data'], function(){
+
   var num = new Date().getTime();
   gulp.src('./dist/public/scripts/scripts.min.js')
     .pipe(rename("scripts.min"+num.toString()+".js"))
@@ -158,7 +165,7 @@ gulp.task('build', ['prepare-build', 'copy-images'], function(){
     .pipe(preprocess())
     .pipe(replace("scripts.js","scripts.min"+num.toString()+".js"))
     .pipe(replace("styles.css","styles.min"+num.toString()+".css"))
-    .pipe(rename("index.php"))
+    // .pipe(rename("index.php"))
     .pipe(gulp.dest("./dist"));
 });
 

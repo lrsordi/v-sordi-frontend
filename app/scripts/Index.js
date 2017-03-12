@@ -8,7 +8,7 @@ var MobileDetect = require('mobile-detect');
 var StringsHelper = require('./helpers/StringsHelper');
 var ContentProvider = require('./providers/ContentProvider');
 window.ContentProvider = ContentProvider;
-TweenMax.ticker.fps(60);
+
 
 var HAS_VIDEO = true;
 
@@ -24,13 +24,16 @@ var Index = function(){
 
 
 	window.Globals = Globals;
-	  window.mobileDetect = new MobileDetect(window.navigator.userAgent);
-	  window.mobileDetect.touch = function(){
-	    var isTouchDevice = 'ontouchstart' in document.documentElement;
-	    return (isTouchDevice || window.mobileDetect.mobile() || window.mobileDetect.tablet());
-		};
-	if(window.mobileDetect.mobile() && !window.mobileDetect.tablet()){
+  window.mobileDetect = new MobileDetect(window.navigator.userAgent);
+  window.mobileDetect.touch = function(){
+    var isTouchDevice = 'ontouchstart' in document.documentElement;
+    return (isTouchDevice || window.mobileDetect.mobile() || window.mobileDetect.tablet());
+	};
 
+	if(!window.mobileDetect.mobile()){
+		TweenMax.ticker.fps(60);
+	}else{
+		TweenMax.ticker.fps(30);
 	}
 
 	var p = StringsHelper.getParameterByName("language");

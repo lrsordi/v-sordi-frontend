@@ -19,6 +19,8 @@ var PortfolioScreen = React.createClass({
 		positeElements : function(){
 			var posy = 0;
 
+			if(window.mobileDetect.mobile()) return;
+
 			for(var i = 0; i < this.albums.length; i++){
 				TweenMax.set(ReactDOM.findDOMNode(this.refs["album"+i.toString()]), {y : posy});
 				this.albums[i].posy = posy;
@@ -29,6 +31,7 @@ var PortfolioScreen = React.createClass({
 
 		componentWillUnmount : function(){
 			$(window).off('scroll', this.onScroll);
+			$("section#portfolio").off('scroll', this.onScroll);
 			$(window).off('scroll', this.onResize);
 			$("#fake-scroller").height("100vh");
 			this.queue.removeAllEventListeners();
@@ -39,7 +42,7 @@ var PortfolioScreen = React.createClass({
 		},
 
 		componentDidMount : function(){
-
+			$("#app").addClass("white");
 			this.totalScrollAreas = 0;
 			this.containerMax = $(ReactDOM.findDOMNode(this.refs.containermax));
 			var self = this;
@@ -79,11 +82,15 @@ var PortfolioScreen = React.createClass({
 			this.queue.on('fileload', this.onFileComplete);
 			this.queue.load();
 
-			var h = (this.totalScrollAreas * 100).toString() + "vh";
-			$("#fake-scroller").height(h);
-			this.containerMax.height(h);
-			$(window).on('scroll', this.onScroll);
-			$(window).on('resize', this.onResize);
+			if(!window.mobileDetect.mobile()){
+				var h = (this.totalScrollAreas * 100).toString() + "vh";
+				$("#fake-scroller").height(h);
+				this.containerMax.height(h);
+				$(window).on('resize', this.onResize);
+				$(window).on('scroll', this.onScroll);
+			}else{
+				$("section#portfolio").on('scroll', this.onScroll);
+			}
 
 			var slug = this.props.params.slug;
 			this.updateScrollBySlug(slug);
@@ -125,8 +132,14 @@ var PortfolioScreen = React.createClass({
 		},
 
 		onScroll : function(){
-			var stop = $(window).scrollTop();
-			TweenMax.to(this.containerMax, 1, {y : -stop, onUpdate:this.onFixedUpdate, roundProps:"y", force3D : true, ease : Quint.easeOut});
+			//if(window.mobileDetect.mobile()) return;
+			var mob = window.mobileDetect.mobile();
+
+			var stop = (!mob) ? $(window).scrollTop() : $("section#portfolio").scrollTop();
+
+			if(!mob)
+				TweenMax.to(this.containerMax, 1, {y : -stop, onUpdate:this.onFixedUpdate, roundProps:"y", force3D : true, ease : Quint.easeOut});
+
 			var album;
 			var coef = 0;
 			var orgCoef = 0;
@@ -134,6 +147,8 @@ var PortfolioScreen = React.createClass({
 			var wh = $(window).height();
 			var dH;
 			var coefSlug = 0;
+
+			var hasCover = false;
 
 			for(var i = 0; i < this.albums.length; i++){
 				album = this.albums[i];
@@ -143,6 +158,10 @@ var PortfolioScreen = React.createClass({
 
 				coef = -(album.posy - stop)/(wh);
 				coefSlug = -(album.posy - stop)/(wh * album.photos.length+1);
+
+				if(mob){
+					coef = albumContainer.offset().top/wh;
+				}
 				// if(i == 0)
 				// console.log(coefSlug);
 
@@ -152,17 +171,38 @@ var PortfolioScreen = React.createClass({
 					}
 				}
 
+				if(mob){
+					if(coef < 0 && coef > -1){
+						hasCover = true;
+					}
+				}
+
 				coef = Math.max(0,coef);
 				coef = Math.min(1,coef);
+
+				if(!mob){
+					if(coef > 0 && coef < 1){
+						hasCover = true;
+					}
+				}
 
 				var coefScl = coef * 2;
 				coecoefSclf = Math.max(0,coefScl);
 				coefScl = Math.min(1,coefScl);
 
-				TweenMax.to(albumContainer.find("div.area-cover div.white-layer"), 1, {opacity : coef, ease : Linear.easeNone});
-				TweenMax.to(albumContainer.find("div.area-cover"), 1, {y : coef * wh*0.8, roundProps:"y", force3D : true, ease : Quint.easeOut});
-				TweenMax.to(albumContainer.find("div.area-details div.scroll-down"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), scale : 1-coefScl, y : coefScl * 20, ease : Quint.easeOut});
+				if(!mob){
+					TweenMax.to(albumContainer.find("div.area-cover div.white-layer"), 1, {opacity : coef, ease : Linear.easeNone});
+					TweenMax.to(albumContainer.find("div.area-cover"), 1, {y : coef * wh*0.8, roundProps:"y", force3D : true, ease : Quint.easeOut});
+					TweenMax.to(albumContainer.find("div.area-details div.scroll-down"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), scale : 1-coefScl, y : coefScl * 20, ease : Quint.easeOut});
+				}
 				//TweenMax.to(albumContainer.find("div.area-details"), 1, {y : coef * -(dH - (wh * 0.04)), roundProps:"y", force3D : true, ease : Quint.easeOut});
+			}
+
+			console.log(hasCover + " " + stop);
+			if(hasCover || stop == 0){
+				$("#app").addClass("white");
+			}else{
+				$("#app").removeClass("white");
 			}
 		},
 

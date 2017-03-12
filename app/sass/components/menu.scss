@@ -25,6 +25,8 @@ div.main-menu {
       position : relative;
       cursor : pointer;
 
+      transition : color 0.5s linear;
+
       &:hover, &.selected{
         text-decoration: underline;
       }
@@ -41,6 +43,8 @@ div.main-menu {
       margin-left : 10px;
       margin-right : 10px;
       pointer-events : none;
+
+      transition : color 0.5s linear;
     }
   }
 
@@ -67,6 +71,7 @@ div.main-menu {
     a.back {
       font-family: 'adobe-garamond-pro';
       color : #000;
+      transition : color 0.5s linear;
       font-size : 20px;
       padding-top : 3.9vh;
       padding-bottom : 3.9vh;
@@ -80,6 +85,7 @@ div.main-menu {
 
       span:not(:first-child){
         color : #fff;
+        transition : color 0.5s linear;
         position : absolute;
         top : 3.9vh;
         background : #000;
@@ -105,6 +111,7 @@ div.main-menu {
           a {
             font-family: 'adobe-garamond-pro';
             color : #000;
+            transition : color 0.5s linear;
             font-size : 20px;
             padding-top : 3.9vh;
             padding-bottom : 3.9vh;
@@ -119,6 +126,7 @@ div.main-menu {
 
             span:not(:first-child){
               color : #fff;
+              transition : color 0.5s linear;
               position : absolute;
               top : 3.9vh;
               background : #000;
@@ -165,6 +173,7 @@ div.main-menu {
           position : relative;
           width : 100%;
           color : #000;
+          transition : color 0.5s linear;
 
           &.selected {
             pointer-events : none;
@@ -173,13 +182,88 @@ div.main-menu {
           span:not(:first-child){
             color : #fff;
             position : absolute;
-
+            transition : color 0.5s linear;
             background : #000;
             margin-left : -1vh;
             left : 0px;
           }
         }
       }
+    }
+  }
+}
+
+
+@media screen and (max-width:1000px) {
+  div.main-menu {
+
+    div.languages {
+      font-size : 2.5vw;
+      padding-left : 0vh;
+      transition : color 0.5s linear;
+      position : fixed;
+      width : auto;
+      top : auto;
+      left : auto;
+      right : 5vw;
+      bottom : 5vh;
+    }
+
+    div.left-column {
+      top : 46vh;
+      left : 2vw;
+
+      h1 {
+
+        svg {
+          height: 10vh;
+          width : 10vh * 3.93;
+
+          path {
+            transition: fill 0.5s linear;
+          }
+        }
+      }
+
+      a.back {
+        font-size : 2.5vw;
+        padding-left : 0vw;
+      }
+
+      nav.main-nav {
+
+        ul {
+          li {
+
+            a {
+              font-family: 'adobe-garamond-pro';
+              color : #000;
+              transition : color 0.5s linear;
+              font-size : 2.5vw;
+              padding-top : 1vh;
+              margin-top : 4vh;
+              padding-bottom : 1vh;
+              padding-left : 3vh;
+              margin-bottom : 4vh;
+
+              &:hover, &:active{
+                background : #000;
+                color : #fff;
+              }
+            }
+
+            span:not(:first-child){
+              display: none;
+            }
+
+          }
+        }
+      }
+    }
+
+
+    nav.categories-nav {
+      display : none;
     }
   }
 }

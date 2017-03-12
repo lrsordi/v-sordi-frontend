@@ -9,6 +9,7 @@ var BackgroundComponent = React.createClass({
   $interval : null,
   $currentElement : null,
   $lastZIndex : -1,
+  canInvertColors : true,
 
 
   getInitialState : function(){
@@ -33,8 +34,12 @@ var BackgroundComponent = React.createClass({
     var whitelayer = $(ReactDOM.findDOMNode(this.refs.whitelayer));
     if(this.state.isContactOrAbout){
       TweenMax.to(whitelayer, 1, {opacity : 1, ease : Linear.easeNone});
+      this.canInvertColors = false;
+      this.checkInvertColors();
     }else{
       TweenMax.to(whitelayer, 1, {opacity : 0, ease : Linear.easeNone});
+      this.canInvertColors = true;
+      this.checkInvertColors();
     }
   },
 
@@ -51,8 +56,12 @@ var BackgroundComponent = React.createClass({
 
     if(this.props.location != "/" && this.props.location.indexOf("portfolio") === -1){
       TweenMax.to(whitelayer, 1, {opacity : 1, ease : Linear.easeNone});
+      this.canInvertColors = false;
+      this.checkInvertColors();
     }else{
       TweenMax.to(whitelayer, 1, {opacity : 0, ease : Linear.easeNone});
+      this.canInvertColors = true;
+      this.checkInvertColors();
     }
 
     if(this.props.location.indexOf("portfolio") > -1){
@@ -71,7 +80,25 @@ var BackgroundComponent = React.createClass({
   //     isContactOrAbout : nextProps.isContactOrAbout
   //   });
   // },
+  checkInvertColors : function(){
+    var inverted = ContentProvider.homeCovers[this.$currentElement].isCoverInvertedColor;
+    if(this.props.location.indexOf("portfolio") > -1) return;
+    
+    if(this.canInvertColors){
+      if(inverted){
+        $("#app").addClass("white");
+      }else{
+        $("#app").removeClass("white");
+      }
+    }else{
+      $("#app").removeClass("white");
+    }
 
+    // console.log("CHECK INVERT" + " " + this.props.location.indexOf("portfolio"));
+    // if(this.props.location.indexOf("portfolio") > -1){
+    //   $("#app").addClass("white");
+    // }
+  },
   showNextBackground : function(force){
 
     if(!force){
@@ -83,6 +110,10 @@ var BackgroundComponent = React.createClass({
 
     var container = $(ReactDOM.findDOMNode(this.refs.backgroundcontainer));
     var el = $(container.find("div.image-item")[this.$currentElement]);
+
+
+
+    this.checkInvertColors();
 
     if(this.$currentElement === 0){
       el.css("z-index", this.$lastZIndex);

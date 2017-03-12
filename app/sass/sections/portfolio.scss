@@ -145,3 +145,131 @@ section#portfolio{
     }
   }
 }
+
+
+
+
+
+
+@media screen and (max-width : 1000px){
+  section#portfolio{
+    width : 100vw;
+    height : 100vh;
+    position : absolute;
+    display : block;
+
+
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+
+
+    section.portfolio-area{
+      width : 100vw;
+      height : auto;
+      display : block;
+      position : relative;
+      float : left;
+
+      div.area-cover {
+        width : 100vw;
+        height : 100vh;
+        display : block;
+        float : left;
+        position : relative;
+      }
+
+      div.area-details {
+        width: 100vw;
+        left : 0vw;
+        padding : 6vh;
+        position : absolute;
+        top : 90vh;
+        z-index : 3;
+        display : block;
+        float : left;
+
+        div.scroll-down {
+          position : absolute;
+          font-family: 'adobe-garamond-pro';
+          font-size : 2.5vw;
+          color : #000;
+          text-align: center;
+          width : 50vh;
+          margin : 0 auto;
+          margin-top : -15vh;
+          left : 50%;
+          margin-left : -25vh;
+
+          svg {
+            width : 1vw;
+            height : 1vw;
+            transform: rotate(90deg) translate(0px,-1vw)
+
+          }
+        }
+
+        h2 {
+          font-size : 2.5vw;
+        }
+
+        div.content {
+          font-size: 2.5vh;
+          margin-top : 2.5vh;
+        }
+      }
+
+      div.area-photos {
+        position : relative;
+        top : 0px;
+        display : block;
+        float : left;
+
+        div.photo-item {
+          width : 100vw;
+          height : 100vh;
+          display : block;
+          float : left;
+          position : relative;
+
+          &:last-child {
+            //-bottom : 2px solid #fff;
+          }
+
+
+          div.bar {
+            top : 50%;
+            height : 1px;
+            width : 30vw;
+            left : 35vw;
+            background : rgba(0,0,0,0.3);
+            position : relative;
+
+            div.percentage{
+              display : block;
+              background : #000;
+              width : 30vw;
+              height : 1px;
+              transform-origin: 0px 0px;
+
+              transform : scaleX(0);
+            }
+          }
+
+          div.photo-real {
+            position : absolute;
+            top : 0px;
+            left : 0px;
+            width : 100vw;
+            height : 100vh;
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size : contain;
+            opacity : 0;
+          }
+        }
+      }
+    }
+  }
+}

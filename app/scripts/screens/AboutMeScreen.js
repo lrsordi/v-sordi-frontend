@@ -25,6 +25,9 @@ var AboutMeScreen = React.createClass({
 			TweenMax.fromTo(content, 1, {x : -10, opacity:0}, {x : 0, opacity : 1, ease : Expo.easeInOut, delay : 1});
 
 			document.title = "valéria sordi photography // " + ContentProvider.getTranslatedText("aboutme_title");
+
+			$(window).scrollTop(10);
+			$(window).scrollTop(0);
 		},
 
 		componentWillUnmount : function(){
@@ -59,6 +62,7 @@ var AboutMeScreen = React.createClass({
 						<div className="spacer" ref="spacer"></div>
 						<div className="content" ref="content" dangerouslySetInnerHTML={content}></div>
 					</div>
+					<div className="over-deg"></div>
 				</section>
 			)
 		}

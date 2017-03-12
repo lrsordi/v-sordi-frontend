@@ -2,6 +2,10 @@ section#contact{
   position : absolute;
   top : 0px;
 
+  div.over-deg {
+    display : none;
+  }
+
   div.column-content{
     display : block;
     position : absolute;
@@ -158,7 +162,7 @@ section#contact{
         color : #000;
         border-bottom : 1px solid #000;
         padding-bottom : 5px;
-
+        border-radius : 0px;
         margin-top : 1vh;
 
         &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -186,4 +190,132 @@ section#contact{
     }
 
   }
+}
+
+
+
+
+@media screen and (max-width : 1000px){
+  section#contact{
+
+    div.over-deg {
+      display : none;
+    }
+
+    div.column-content{
+      top : 18vh;
+      width : 68vw;
+      padding-bottom : 20vh;
+
+      h2 {
+        font-size: 3vw;
+      }
+
+      div.spacer {
+        margin-top : 2.5vh;
+        margin-bottom : 10vh;
+      }
+
+      div.content {
+        margin-top : 1vh;
+
+        span {
+          font-size : 2.5vw;
+
+          &.value{
+            float : left;
+            position : relative;
+            clear : both;
+            margin-top : 1vw;
+          }
+
+          &.newline {
+            margin-top : 5vh;
+          }
+
+          a {
+            &:hover,&:active{
+              background: #ffffff;
+              color : #000000;
+            }
+
+
+            span:not(:first-child){
+              display : none;
+            }
+          }
+
+        }
+      }
+
+
+      div.content-form {
+        display : none;
+
+
+        &.sending {
+          input,textarea,button{
+            pointer-events : none !important;
+            opacity : 0.6;
+          }
+        }
+
+        span.fill-in {
+          font-size : 2.5vw;
+        }
+
+
+        button,span.sending {
+          font-size : 2.5vw;
+          padding : 1.5vw;
+          span:not(:first-child){
+            display : none;
+          }
+        }
+
+        input,textarea {
+          clear : both;
+          float : left;
+          position : relative;
+          font-family: adobe-garamond-pro;
+          font-style: italic;
+          font-size : 2.5vw;
+          width : 60vw;
+          padding : 10px;
+          background : none;
+          border : none;
+          outline : none;
+          color : #000;
+          border-bottom : 1px solid #000;
+          padding-bottom : 5px;
+          border-radius : 0px;
+          margin-top : 1vh;
+
+          &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+              color:    rgba(0,0,0,0.7);
+              opacity : 1;
+          }
+          &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+             color:    rgba(0,0,0,0.7);
+             opacity : 1;
+          }
+          &::-moz-placeholder { /* Mozilla Firefox 19+ */
+             color:    rgba(0,0,0,0.7);
+             opacity : 1;
+          }
+          &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+             color:    rgba(0,0,0,0.7);
+             opacity : 1;
+          }
+        }
+
+        textarea {
+          height : 10vh;
+          resize : none;
+        }
+      }
+
+    }
+  }
+
 }
