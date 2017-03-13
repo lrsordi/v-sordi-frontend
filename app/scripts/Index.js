@@ -22,7 +22,6 @@ var Index = function(){
 	var percentage;
 
 
-
 	window.Globals = Globals;
   window.mobileDetect = new MobileDetect(window.navigator.userAgent);
   window.mobileDetect.touch = function(){
@@ -36,6 +35,7 @@ var Index = function(){
 		TweenMax.ticker.fps(30);
 	}
 
+
 	var p = StringsHelper.getParameterByName("language");
 	if(p){
 		if(p === "pt"){
@@ -46,7 +46,8 @@ var Index = function(){
 			ContentProvider.language = "pt";
 		}
 
-		localStorage.setItem("language_vsp", p);
+		if(!window.is_crawler)
+			localStorage.setItem("language_vsp", p);
 	}else if(localStorage.getItem("language_vsp")){
 		if(localStorage.getItem("language_vsp") === "pt"){
 			ContentProvider.language = "pt";
@@ -57,8 +58,17 @@ var Index = function(){
 		}
 	}else{
 		ContentProvider.language = "pt";
-		localStorage.setItem("language_vsp", "pt");
+
+		if(!window.is_crawler)
+			localStorage.setItem("language_vsp", "pt");
 	}
+
+	if(ContentProvider.language == "pt"){
+		$("html").attr("lang", "pt-BR");
+	}else{
+		$("html").attr("lang", "en-US");
+	}
+
 
 	initPreloader();
 
@@ -125,6 +135,12 @@ var Index = function(){
 		queue.removeAllEventListeners();
 
 		ContentProvider.generateHomeCovers();
+
+		if(window.is_crawler){
+			$("#preloader").remove();
+			onCoverQueueComplete();
+			return;
+		}
 
 		queue = new createjs.LoadQueue(true,"",true);
 

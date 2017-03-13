@@ -45,7 +45,7 @@ var MainTemplate = React.createClass({
         </div>
         <MenuComponent ref="menu" location={this.state.location.pathname} />
 
-        <div className="links" ref="links" style={{opacity : (this.state.location.pathname.indexOf("portfolio") > -1 ? 0 : 1)}}>
+        <div className="links" ref="links" style={{opacity : (this.state.location.pathname.indexOf("portifolio") > -1 ? 0 : 1)}}>
           <Link to={ContentProvider.generalContacts.facebook_url} target="_blank">facebook</Link>
           <div className="spacer"/>
           <Link to={ContentProvider.generalContacts.instagram_url} target="_blank">instagram</Link>

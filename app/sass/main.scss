@@ -48,7 +48,7 @@ html,body {
     }
     div.links div.spacer {background : #ffffff !important;}
     div.languages div.spacer {color : #ffffff !important;}
-    div.scroll-down { color : #ffffff !important;}
+    //div.scroll-down { color : #ffffff !important;}
     a {
       color : #ffffff !important;
     }
@@ -57,6 +57,8 @@ html,body {
         fill : #ffffff !important;
       }
     }
+
+    div.scroll-down { svg path {fill : #000000 !important;}}
   }
 }
 

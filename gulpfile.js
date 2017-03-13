@@ -117,7 +117,7 @@ gulp.task('watch', function() {
 
 gulp.task('server',function(){
     nodemon({
-        'script': 'server.js',
+        'script': 'server-development.js',
         'ignore': 'public/**/*'
     });
 });

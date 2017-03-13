@@ -5,7 +5,7 @@ var Globals = require('../core/Globals');
 var classNames = require('classnames');
 var SplitTextsHelper = require('../helpers/SplitTextsHelper');
 var StringsHelper = require('../helpers/StringsHelper');
-
+var DocumentMeta = require('react-document-meta');
 
 
 var ContactScreen = React.createClass({
@@ -19,8 +19,6 @@ var ContactScreen = React.createClass({
 		},
 
 		componentDidMount : function(){
-			document.title = "valéria sordi photography // " + ContentProvider.getTranslatedText("contact_title");
-
 			var title = $(ReactDOM.findDOMNode(this.refs.title));
 			var spacer = $(ReactDOM.findDOMNode(this.refs.spacer));
 			var content = $(ReactDOM.findDOMNode(this.refs.content));
@@ -50,6 +48,7 @@ var ContactScreen = React.createClass({
 
 			$(window).scrollTop(10);
 			$(window).scrollTop(0);
+			window.prerenderReady = true;
 		},
 
 
@@ -155,6 +154,7 @@ var ContactScreen = React.createClass({
 		render : function(){
 			return (
 				<section id="contact">
+					<DocumentMeta title={"valéria sordi photography // " + ContentProvider.getTranslatedText("contact_title")}/>
 					<div className="column-content">
 						<h2 ref="title">{ContentProvider.getTranslatedText("contact_title")}</h2>
 						<div className="spacer" ref="spacer"></div>

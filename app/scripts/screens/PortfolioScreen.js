@@ -5,6 +5,7 @@ var Globals = require('../core/Globals');
 var classNames = require('classnames');
 var ContentProvider = require('../providers/ContentProvider');
 var PhotoItemComponent = require('./components/PhotoItemComponent');
+var DocumentMeta = require('react-document-meta');
 require("gsap/ScrollToPlugin");
 
 
@@ -42,18 +43,17 @@ var PortfolioScreen = React.createClass({
 		},
 
 		componentDidMount : function(){
-			$("#app").addClass("white");
+			// $("#app").addClass("white");
+			$("#app").removeClass("white");
 			this.totalScrollAreas = 0;
 			this.containerMax = $(ReactDOM.findDOMNode(this.refs.containermax));
 			var self = this;
 
 			this.queue = new createjs.LoadQueue(true,null,true);
 
-
 			ContentProvider.albums.map(function(item,index){
 				self.totalScrollAreas += item.photos.length + 1;
 				self.albums[index].totalAreas = item.photos.length + 1;
-
 
 				for(var k = 0; k < self.albums[index].photos.length; k++){
 					self.queue.loadFile(
@@ -65,11 +65,13 @@ var PortfolioScreen = React.createClass({
 				}
 
 				var el = $(ReactDOM.findDOMNode(self.refs["album"+index.toString()]));
-				TweenMax.fromTo(el.find("div.area-details"), 1, {opacity : 0, y : 300}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1});
-				TweenMax.fromTo(el.find("div.area-details h2"), 1, {opacity : 0, y : 300}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.1});
-				TweenMax.fromTo(el.find("div.area-details div.scroll-down"), 1, {opacity : 0, y : -50}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1});
+				TweenMax.fromTo(el.find("div.area-details"), 1, {opacity : 0}, {opacity : 1, ease : Quint.easeOut, delay:1});
+				TweenMax.fromTo(el.find("div.area-details h2"), 1, {opacity : 0, y : 150}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.1});
+				TweenMax.fromTo(el.find("div.area-details div.content"), 1, {opacity : 0, y : 150}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.2});
+				TweenMax.fromTo(el.find("div.area-details div.scroll-down"), 1, {opacity : 0, y : 150}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.3});
+				// TweenMax.fromTo(el.find("div.area-details div.scroll-down"), 1, {opacity : 0, y : -50}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1});
 				TweenMax.to(el.find("div.area-details div.scroll-down svg"), 0.5, {y : -2, yoyo : true, ease : Quad.easeOut, repeat : -1});
-				TweenMax.fromTo(el.find("div.area-details div.content"), 1, {opacity : 0, y : 300}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.2});
+				// TweenMax.fromTo(el.find("div.area-details div.content"), 1, {opacity : 0, y : 300}, {opacity : 1, y : 0, ease : Quint.easeOut, delay:1.2});
 			});
 			TweenMax.set(this.containerMax, {opacity : 0});
 			TweenMax.fromTo(this.containerMax, 0.5, {opacity :0}, {opacity : 1, ease : Linear.easeNone, delay : 0.5});
@@ -94,6 +96,8 @@ var PortfolioScreen = React.createClass({
 
 			var slug = this.props.params.slug;
 			this.updateScrollBySlug(slug);
+
+			window.prerenderReady = true;
 		},
 
 		onResize : function(){
@@ -167,7 +171,7 @@ var PortfolioScreen = React.createClass({
 
 				if(coefSlug >= 0 && coefSlug <= 1 && !this.isIgnoring){
 					if(album.category.slug !== this.props.params.slug){
-						this.props.router.push('/portfolio/'+album.category.slug);
+						this.props.router.push('/portifolio/'+album.category.slug);
 					}
 				}
 
@@ -193,14 +197,15 @@ var PortfolioScreen = React.createClass({
 				if(!mob){
 					TweenMax.to(albumContainer.find("div.area-cover div.white-layer"), 1, {opacity : coef, ease : Linear.easeNone});
 					TweenMax.to(albumContainer.find("div.area-cover"), 1, {y : coef * wh*0.8, roundProps:"y", force3D : true, ease : Quint.easeOut});
-					TweenMax.to(albumContainer.find("div.area-details div.scroll-down"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), scale : 1-coefScl, y : coefScl * 20, ease : Quint.easeOut});
+					TweenMax.to(albumContainer.find("div.area-details h2"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), y : coefScl * 300, ease : Quint.easeOut});
+					TweenMax.to(albumContainer.find("div.area-details div.content"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), y : coefScl * 350, ease : Quint.easeOut});
+					TweenMax.to(albumContainer.find("div.area-details div.scroll-down"), 1, {opacity : Math.max(0,1-(coefScl*1.5)), y : coefScl * 400, ease : Quint.easeOut});
 				}
 				//TweenMax.to(albumContainer.find("div.area-details"), 1, {y : coef * -(dH - (wh * 0.04)), roundProps:"y", force3D : true, ease : Quint.easeOut});
 			}
 
-			console.log(hasCover + " " + stop);
 			if(hasCover || stop == 0){
-				$("#app").addClass("white");
+				$("#app").removeClass("white");
 			}else{
 				$("#app").removeClass("white");
 			}
@@ -230,11 +235,10 @@ var PortfolioScreen = React.createClass({
 						<div className="area-cover" style={{backgroundImage : "url('"+(window.api_url + album.albumCover.path.replace("public/","") + album.albumCover.filename)+"')"}}>
 							<div className="white-layer"></div>
 						</div>
-						<div className="area-details">
-							<div className="scroll-down">{ContentProvider.getTranslatedText("scrolldown")}<svg version="1.1" id="Capa_1" x="0px" y="0px" width="454.52px" height="454.52px" viewBox="0 0 454.52 454.52" style={{enableBackground:"new 0 0 454.52 454.52"}}><g><path d="M378.135,227.256L206.224,55.354c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.388-12.359,44.747,0L445.258,204.89c6.177,6.18,9.262,14.271,9.262,22.366c0,8.098-3.091,16.195-9.262,22.372L250.971,443.91c-12.359,12.365-32.394,12.365-44.747,0c-12.354-12.354-12.354-32.391,0-44.744L378.135,227.256z M9.265,399.166c-12.354,12.354-12.354,32.391,0,44.744c12.354,12.365,32.382,12.365,44.748,0l194.287-194.281c6.177-6.177,9.257-14.274,9.257-22.372c0-8.095-3.086-16.192-9.257-22.366L54.013,10.606c-12.365-12.359-32.394-12.359-44.748,0c-12.354,12.354-12.354,32.388,0,44.748L181.18,227.256L9.265,399.166z"/></g></svg></div>
+						<div className={"area-details"}>
 							<h2>{ContentProvider.getCategoryTranslatedName(item)}</h2>
-							<div className="content" dangerouslySetInnerHTML={content}>
-							</div>
+							<div className="content" dangerouslySetInnerHTML={content}></div>
+							<div className="scroll-down">{ContentProvider.getTranslatedText("scrolldown")}<svg version="1.1" id="Capa_1" x="0px" y="0px" width="454.52px" height="454.52px" viewBox="0 0 454.52 454.52" style={{enableBackground:"new 0 0 454.52 454.52"}}><g><path d="M378.135,227.256L206.224,55.354c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.388-12.359,44.747,0L445.258,204.89c6.177,6.18,9.262,14.271,9.262,22.366c0,8.098-3.091,16.195-9.262,22.372L250.971,443.91c-12.359,12.365-32.394,12.365-44.747,0c-12.354-12.354-12.354-32.391,0-44.744L378.135,227.256z M9.265,399.166c-12.354,12.354-12.354,32.391,0,44.744c12.354,12.365,32.382,12.365,44.748,0l194.287-194.281c6.177-6.177,9.257-14.274,9.257-22.372c0-8.095-3.086-16.192-9.257-22.366L54.013,10.606c-12.365-12.359-32.394-12.359-44.748,0c-12.354,12.354-12.354,32.388,0,44.748L181.18,227.256L9.265,399.166z"/></g></svg></div>
 						</div>
 						<div className="area-photos">
 							{photos}
@@ -245,6 +249,7 @@ var PortfolioScreen = React.createClass({
 
 			return (
 				<section id="portfolio" ref="containermax" >
+					<DocumentMeta title={"valéria sordi photography // " + ContentProvider.getTranslatedText("portifolio_title")}/>
 					{areas}
 				</section>
 			)

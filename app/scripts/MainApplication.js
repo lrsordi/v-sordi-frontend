@@ -28,7 +28,7 @@ var MainApplication = React.createClass({
           <Route path="/" component={MainTemplate}>
             <IndexRoute component={HomeScreen} />
             <Route path="/sobre" component={AboutMeScreen} />
-            <Route path="/portfolio" component={PortfolioScreen}>
+            <Route path="/portifolio" component={PortfolioScreen}>
               <IndexRoute component={PortfolioScreen} />
               <Route path=":slug" component={PortfolioScreen}/>
             </Route>

@@ -53,8 +53,6 @@ var ContentProvider = {
     }else{
       lang = "ptbr";
     }
-
-
     return this.texts[identifier][lang].toString();
   },
 

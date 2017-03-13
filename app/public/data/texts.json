@@ -1,11 +1,15 @@
 {
   "menu_about": {
-    "ptbr" : "minha história&nbsp;",
-    "enus" : "about me&nbsp;"
+    "ptbr" : "sobre&nbsp;",
+    "enus" : "about&nbsp;"
   },
-  "menu_portfolio": {
-    "ptbr" : "portfólio&nbsp;",
+  "menu_portifolio": {
+    "ptbr" : "portifólio&nbsp;",
     "enus" : "portfolio&nbsp;"
+  },
+  "portifolio_title": {
+    "ptbr" : "portifólio",
+    "enus" : "portifolio"
   },
   "menu_contact": {
     "ptbr" : "contato&nbsp;",
@@ -60,8 +64,8 @@
     "enus" : "An error occurred. Please, try again."
   },
   "aboutme_title": {
-    "ptbr" : "minha história",
-    "enus" : "about me"
+    "ptbr" : "sobre",
+    "enus" : "about"
   },
   "scrolldown": {
     "ptbr" : "role para baixo",

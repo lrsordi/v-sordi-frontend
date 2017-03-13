@@ -4,7 +4,7 @@ var Link = require('react-router').Link;
 var Globals = require('../core/Globals');
 var classNames = require('classnames');
 var ContentProvider = require('../providers/ContentProvider');
-
+var DocumentMeta = require("react-document-meta");
 var SplitText = require('../vendors/SplitText.min.js');
 
 
@@ -24,10 +24,9 @@ var AboutMeScreen = React.createClass({
 
 			TweenMax.fromTo(content, 1, {x : -10, opacity:0}, {x : 0, opacity : 1, ease : Expo.easeInOut, delay : 1});
 
-			document.title = "valéria sordi photography // " + ContentProvider.getTranslatedText("aboutme_title");
-
 			$(window).scrollTop(10);
 			$(window).scrollTop(0);
+			window.prerenderReady = true;
 		},
 
 		componentWillUnmount : function(){
@@ -57,6 +56,7 @@ var AboutMeScreen = React.createClass({
 
 			return (
 				<section id="about">
+					<DocumentMeta title={"valéria sordi photography // " + ContentProvider.getTranslatedText("aboutme_title")}/>
 					<div className="column-content">
 						<h2 ref="title">{ContentProvider.getTranslatedText("aboutme_title")}</h2>
 						<div className="spacer" ref="spacer"></div>

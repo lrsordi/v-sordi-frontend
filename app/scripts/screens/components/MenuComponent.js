@@ -9,7 +9,7 @@ var MenuComponent = React.createClass({
 
   getInitialState: function() {
     return {
-      isInternalMenu : (this.props.location.indexOf("portfolio") > -1) || false,
+      isInternalMenu : (this.props.location.indexOf("portifolio") > -1) || false,
       location : this.props.location || "/"
     }
   },
@@ -25,7 +25,7 @@ var MenuComponent = React.createClass({
 
   componentWillReceiveProps : function(nextProps){
     var last = this.state.isInternalMenu;
-    var next = (nextProps.location.indexOf("portfolio") > -1);
+    var next = (nextProps.location.indexOf("portifolio") > -1);
     this.setState(
       {
         isInternalMenu : next,
@@ -125,14 +125,14 @@ var MenuComponent = React.createClass({
   render : function(){
     var self = this;
     var categories = ContentProvider.categories.map(function(evt,item){
-      return <li key={'subcategory' + item.toString()}><Link to={"/portfolio/"+evt.slug} className={self.state.location.indexOf(evt.slug) > -1 ? "selected" : null}>{ContentProvider.getCategoryTranslatedName(evt)}</Link></li>;
+      return <li key={'subcategory' + item.toString()}><Link to={"/portifolio/"+evt.slug} className={self.state.location.indexOf(evt.slug) > -1 ? "selected" : null}>{ContentProvider.getCategoryTranslatedName(evt)}</Link></li>;
     });
 
 
 
     return (
       <div className="main-menu">
-        <div className="languages" ref="languages" style={{opacity : (this.state.location.indexOf("portfolio") > -1 ? 0 : 1)}}>
+        <div className="languages" ref="languages" style={{opacity : (this.state.location.indexOf("portifolio") > -1 ? 0 : 1)}}>
           <Link to={this.state.location + "?language=pt"} className={ContentProvider.language == "pt" ? "selected" : ""} onClick={window.location.reload}>pt</Link>
           <div className="spacer">/</div>
           <Link to={this.state.location + "?language=en"} className={ContentProvider.language == "en" ? "selected" : ""} onClick={window.location.reload}>en</Link>
@@ -149,11 +149,11 @@ var MenuComponent = React.createClass({
           </Link>
           <nav className="main-nav" style={{visibility : (!this.state.isInternalMenu ? "visible" : "hidden")}}>
             <ul>
-              <li><Link to="/sobre" className={this.state.location.indexOf("sobre") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_about")}>{ContentProvider.getTranslatedText("menu_about")}</Link></li>
+              <li><Link to="/sobre" className={this.state.location.indexOf("sobre") > -1 ? "selected" : null}>{ContentProvider.getTranslatedText("menu_about")}</Link></li>
               <li className="spacer"></li>
-              <li><Link to={"/portfolio/"+ContentProvider.categories[0].slug} className={this.state.location.indexOf("portfolio") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_portfolio")}>{ContentProvider.getTranslatedText("menu_portfolio")}</Link></li>
+              <li><Link to={"/portifolio/"+ContentProvider.categories[0].slug} className={this.state.location.indexOf("portifolio") > -1 ? "selected" : null}>{ContentProvider.getTranslatedText("menu_portifolio")}</Link></li>
               <li className="spacer"></li>
-              <li><Link to="/contato" className={this.state.location.indexOf("contato") > -1 ? "selected" : null} title={ContentProvider.getTranslatedText("menu_contact")}>{ContentProvider.getTranslatedText("menu_contact")}</Link></li>
+              <li><Link to="/contato" className={this.state.location.indexOf("contato") > -1 ? "selected" : null}>{ContentProvider.getTranslatedText("menu_contact")}</Link></li>
             </ul>
           </nav>
           <Link to="/" ref="back" className="back" style={{visibility : (this.state.isInternalMenu ? "visible" : "hidden")}}>{ContentProvider.getTranslatedText("back")}</Link>

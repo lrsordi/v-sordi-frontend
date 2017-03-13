@@ -14,7 +14,7 @@ var BackgroundComponent = React.createClass({
 
   getInitialState : function(){
     return {
-      isContactOrAbout : (this.props.location != "/" && this.props.location.indexOf("portfolio") === -1)
+      isContactOrAbout : (this.props.location != "/" && this.props.location.indexOf("portifolio") === -1)
     }
   },
 
@@ -22,14 +22,14 @@ var BackgroundComponent = React.createClass({
     this.$currentElement = NumberHelper.getRandomArbitrary(0,ContentProvider.homeCovers.length-1);
     this.$lastZIndex = ContentProvider.homeCovers.length;
     var container = ReactDOM.findDOMNode(this.refs.backgroundcontainer);
-    TweenMax.fromTo(container, 0.5, {opacity : 0}, {opacity : 1, ease : Linear.easeNone});
+    TweenMax.fromTo(container, 0.5, {opacity : 0}, {opacity : 1, ease : Linear.easeNone, delay:1});
 
     $(container).find("div.image-item").hide();
     $($(container).find("div.image-item")[this.$currentElement]).show();
     $(ReactDOM.findDOMNode(this.refs.whitelayer)).css("z-index", this.$lastZIndex+1);
-    this.$interval = setInterval(this.showNextBackground,5000);
+    //this.$interval = setInterval(this.showNextBackground,5000);
 
-    this.showNextBackground(true);
+    // this.showNextBackground(true);
 
     var whitelayer = $(ReactDOM.findDOMNode(this.refs.whitelayer));
     if(this.state.isContactOrAbout){
@@ -44,7 +44,7 @@ var BackgroundComponent = React.createClass({
   },
 
   componentWillReceiveProps : function(nextProps){
-    if(nextProps.location != "/" && nextProps.location.indexOf("portfolio") === -1){
+    if(nextProps.location != "/" && nextProps.location.indexOf("portifolio") === -1){
       this.setState({isContactOrAbout : true});
     }else{
       this.setState({isContactOrAbout:false});
@@ -54,7 +54,7 @@ var BackgroundComponent = React.createClass({
   componentDidUpdate : function(prevProps, prevState){
     var whitelayer = $(ReactDOM.findDOMNode(this.refs.whitelayer));
 
-    if(this.props.location != "/" && this.props.location.indexOf("portfolio") === -1){
+    if(this.props.location != "/" && this.props.location.indexOf("portifolio") === -1){
       TweenMax.to(whitelayer, 1, {opacity : 1, ease : Linear.easeNone});
       this.canInvertColors = false;
       this.checkInvertColors();
@@ -63,16 +63,14 @@ var BackgroundComponent = React.createClass({
       this.canInvertColors = true;
       this.checkInvertColors();
     }
+    //
+    if(this.props.location.indexOf("portifolio") > -1){
 
-    if(this.props.location.indexOf("portfolio") > -1){
-      clearInterval(this.$interval);
-      this.$interval = null;
-    }else{
-      if(this.$interval == null){
-        this.$interval = setInterval(this.showNextBackground,5000);
-        TweenMax.fromTo(ReactDOM.findDOMNode(this.refs.backgroundcontainer), 1, {opacity : 0}, {opacity : 1});
-      }
-    }
+    }//else{
+    //     // this.$interval = setInterval(this.showNextBackground,5000);
+    //     console.log(this.state, prevState);
+    //
+    // }
   },
 
   // componentWillReceiveProps : function(nextProps){
@@ -82,8 +80,8 @@ var BackgroundComponent = React.createClass({
   // },
   checkInvertColors : function(){
     var inverted = ContentProvider.homeCovers[this.$currentElement].isCoverInvertedColor;
-    if(this.props.location.indexOf("portfolio") > -1) return;
-    
+    if(this.props.location.indexOf("portifolio") > -1) return;
+
     if(this.canInvertColors){
       if(inverted){
         $("#app").addClass("white");
@@ -94,8 +92,8 @@ var BackgroundComponent = React.createClass({
       $("#app").removeClass("white");
     }
 
-    // console.log("CHECK INVERT" + " " + this.props.location.indexOf("portfolio"));
-    // if(this.props.location.indexOf("portfolio") > -1){
+    // console.log("CHECK INVERT" + " " + this.props.location.indexOf("portifolio"));
+    // if(this.props.location.indexOf("portifolio") > -1){
     //   $("#app").addClass("white");
     // }
   },

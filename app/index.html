@@ -8,10 +8,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" >
         -->
         <meta http-equiv="pragma" content="no-cache" />
-        <title>ExpressJS</title>
+        <title>valéria sordi photography //</title>
         <link rel="shortcut icon" href="" type="image/x-icon" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0001,minimum-scale=1.0001,maximum-scale=1.0001,user-scalable=no,shrink-to-fit=no">
-        <meta content="--" name="author" />
+        <meta content="Luiz Sordi" name="author" />
         <!-- @ifdef DEBUG -->
         <base href="<%- root_url %>"/>
         <!-- @endif -->
@@ -24,20 +24,20 @@
         <meta property="og:site_name" content="valéria sordi photography //"/>
         <meta property="og:title" content="valéria sordi photography //" />
         <meta property="og:url" content="http://www.valeriasordi.com/"/>
-        <meta property="og:description" content="" />
-        <meta property="og:image" content="http://www.valeriasordi.com/Meta-Share-2.png" />
+        <meta property="og:description" content="Porto Alegre / RS / Brazil" />
+        <meta property="og:image" content="http://www.valeriasordi.com/public/images/share.jpg" />
 
         <meta itemprop="name" content="valéria sordi photography //">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="http://www.valeriasordi.com/Meta-Share-2.png">
+        <meta itemprop="description" content="Porto Alegre / RS / Brazil">
+        <meta itemprop="image" content="http://www.valeriasordi.com/public/images/share.jpg">
 
-        <meta name="description" content="">
+        <meta name="description" content="Porto Alegre / RS / Brazil">
 
         <meta name="twitter:site" content="valéria sordi photography //">
         <meta name="twitter:title" content="valéria sordi photography //">
-        <meta name="twitter:description" content="">
+        <meta name="twitter:description" content="Porto Alegre / RS / Brazil">
         <meta name="twitter:url" content="http://www.valeriasordi.com/">
-        <meta name="twitter:image" content="http://www.valeriasordi.com/Meta-Share-2.png">
+        <meta name="twitter:image" content="http://www.valeriasordi.com/public/images/share.jpg">
         <meta name="twitter:card" content="summary_large_image">
 
         <link rel="apple-touch-icon" sizes="57x57" href="public/images/icons/apple-icon-57x57.png">
@@ -59,14 +59,22 @@
 
 
         <link rel="stylesheet" href="public/styles/styles.css">
+        <meta name="fragment" content="!">
+        <script>
+          window.prerenderReady = false;
+        </script>
     </head>
     <body>
         <script>
           var api_url = "<%- api_url %>";
+          var is_crawler = <%- is_crawler %>;
         </script>
-        <p style="font-size : 0px; opacity:0; font-family:adobe-garamond-pro;">font loading</p>
-        <p style="font-size : 0px; opacity:0; font-weight : bold; font-family:adobe-garamond-pro;">font loading</p>
-        <p style="font-size : 0px; opacity:0; font-style : italic; font-family:adobe-garamond-pro;">font loading</p>
+
+        <% if(!is_crawler) { %>
+          <p style="font-size : 0px; opacity:0; font-family:adobe-garamond-pro;">font loading</p>
+          <p style="font-size : 0px; opacity:0; font-weight : bold; font-family:adobe-garamond-pro;">font loading</p>
+          <p style="font-size : 0px; opacity:0; font-style : italic; font-family:adobe-garamond-pro;">font loading</p>
+        <% } %>
         <div id="app" style="display:none;">
 
         </div>

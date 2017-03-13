@@ -37,25 +37,28 @@ section#portfolio{
     }
 
     div.area-details {
-      background : #fff;
-      width: 100vw;
+      background : rgba(255,255,255,0.5);
+      width: 30vw;
       left : 0vw;
-      padding : 3vh;
+      padding : 3vh 3vh;
+      padding-left : 5vw;
       position : absolute;
-      top : 90vh;
+      top : 0px;
       z-index : 3;
+      width : 100vw;
+      overflow:hidden;
+      top : 0px;
+      height : 100vh;
 
       div.scroll-down {
-        position : absolute;
+        position : relative;
         font-family: 'adobe-garamond-pro';
         font-size : 20px;
         color : #000;
         text-align: center;
-        width : 30vh;
-        margin : 0 auto;
-        margin-top : -10vh;
-        left : 50%;
-        margin-left : -15vh;
+        margin-top : 1.5vh;
+        clear : both;
+        float : left;
 
         svg {
           width : 9px;
@@ -66,14 +69,17 @@ section#portfolio{
       }
 
       h2 {
-        font-size : 20px;
+        font-size : 60px;
         font-family: 'adobe-garamond-pro';
         font-weight: bold;
-        text-align: center;
+        text-align: left;
         width : 100%;
         display: block;
         position : relative;
         color : #000;
+        float : left;
+        clear : both;
+        margin-top : 70vh;
       }
 
       div.content {
@@ -83,9 +89,12 @@ section#portfolio{
         font-family: 'adobe-garamond-pro';
         font-style: italic;
         width : 100%;
-        text-align: center;
-        margin-top : 2.5vh;
+        text-align: left;
+        margin-top : 1.5vh;
         color : #000;
+        position : relative;
+        clear : both;
+        float : left;
       }
     }
 
